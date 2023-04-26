@@ -1,13 +1,13 @@
 import Head from "next/head";
-import styled, { CSSProperties, Keyframes } from "styled-components";
-import { Flex } from "@/shared/flex";
+import HomePage from "./HomePage";
+import LoginPage from "./LoginPage";
+import { useState } from "react";
 
-const MainContent = styled(Flex)`
-  outline: 10px solid red;
-  padding: 2.5rem;
-  margin: 0.5rem;
-`;
 export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const loginHandler = () => {
+    setIsLoggedIn(!isLoggedIn);
+  };
   return (
     <>
       <Head>
@@ -19,9 +19,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainContent>
-        <h1>Ready For Tomorrow</h1>
-      </MainContent>
+      {isLoggedIn ? (
+        <HomePage />
+      ) : (
+        <LoginPage loginButtonHandler={loginHandler} />
+      )}
     </>
   );
 }
