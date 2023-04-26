@@ -1,11 +1,14 @@
+import styled from "styled-components";
+import * as LoginStyles from "./ButtonStyles";
+
 type LoginPageInformation = { loginButtonHandler: () => void };
 
 const LoginPage = ({ loginButtonHandler }: LoginPageInformation) => {
   return (
-    <div>
+    <LoginStyles.Container>
       Login
       <button onClick={loginButtonHandler}>Login</button>
-    </div>
+    </LoginStyles.Container>
   );
 };
 

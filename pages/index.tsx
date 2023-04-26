@@ -1,6 +1,6 @@
 import Head from "next/head";
 import HomePage from "./HomePage";
-import LoginPage from "./LoginPage";
+import LoginPage from "./LoginPage/LoginPage";
 import { useState } from "react";
 
 export default function Home() {
