@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Container, MainHeader, Wrapper } from "./LoginStyles";
-import LoginForm from "../components/LoginForm/LoginForm";
+import LoginForm from "../components/loginform/LoginForm";
 import { useSession, signIn, signOut } from "next-auth/react";
 type LoginPageInformation = { loginButtonHandler: () => void };
 
