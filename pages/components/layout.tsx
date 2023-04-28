@@ -6,13 +6,11 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const Layout = ({ children }: LayoutProps) => {
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <Navbar />
       <main>{children}</main>
     </>
   );
-};
-
-export default Layout;
+}
