@@ -1,14 +1,17 @@
 import styled from "styled-components";
-import * as LoginStyles from "./ButtonStyles";
+import { Container, MainHeader, Wrapper } from "./LoginStyles";
+import LoginForm from "../components/LoginForm/LoginForm";
 
 type LoginPageInformation = { loginButtonHandler: () => void };
 
 const LoginPage = ({ loginButtonHandler }: LoginPageInformation) => {
   return (
-    <LoginStyles.Container>
-      Login
-      <button onClick={loginButtonHandler}>Login</button>
-    </LoginStyles.Container>
+    <Container>
+      <Wrapper>
+        <MainHeader>Login</MainHeader>
+        <LoginForm loginButtonHandler={loginButtonHandler}></LoginForm>
+      </Wrapper>
+    </Container>
   );
 };
 

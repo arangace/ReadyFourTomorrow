@@ -10,6 +10,10 @@ body {
   overflow-x: hidden;
   font-family: "Nunito", sans-serif;
   --text-colour: white;
+  --primary-colour: #7056b3;
+  --secondary-colour: #ffb202;
+  --tertiary-colour: #30bfbf;
+  --accent-colour: #ff4b4b;
 }
 
 body {

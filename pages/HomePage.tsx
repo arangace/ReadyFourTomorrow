@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { CSSProperties, Keyframes } from "styled-components";
-import { Flex } from "@/shared/flex";
+import { Flex } from "@/shared/globalStyles";
 
 const MainContent = styled(Flex)`
   outline: 10px solid red;
