@@ -1,15 +1,14 @@
-import React from "react";
 import { ReactNode } from "react";
-import Navbar from "./navbar/Navbar";
+import NavBar from "./navbar/Navbar";
 
-type LayoutProps = {
+type Layout = {
   children: ReactNode;
 };
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: Layout) {
   return (
     <>
-      <Navbar />
+      <NavBar />
       <main>{children}</main>
     </>
   );
