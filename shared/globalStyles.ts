@@ -15,9 +15,15 @@ export const FlexColumn = styled.div`
 export const Button = styled.button`
   border: initial;
   background-color: var(--primary-colour);
+  color: var(--text-colour);
+  border: 2px solid var(--primary-colour);
   padding: initial;
   margin: initial;
   outline: initial;
   cursor: pointer;
   color: ${(props) => props.color || "white"};
+  &:hover {
+    color: var(--primary-colour);
+    background-color: var(--text-colour);
+  }
 `;
