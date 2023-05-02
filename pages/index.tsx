@@ -1,8 +1,8 @@
 import Head from "next/head";
 import HomePage from "../components/HomePage";
 import LoginPage from "../components/loginPage/LoginPage";
-import { Suspense, useState } from "react";
-import { useSession, signOut } from "next-auth/react";
+import { Suspense, useEffect, useState } from "react";
+import { useSession, signOut, getSession } from "next-auth/react";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -10,7 +10,15 @@ export default function Home() {
     setIsLoggedIn(!isLoggedIn);
   };
   const { data, status } = useSession();
-  // if (status === "loading") return <h1> loading... please wait</h1>;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const session = await getSession();
+      // console.log("session");
+      // console.log(session);
+    };
+    fetchData();
+  }, [data]);
 
   return (
     <>
@@ -25,7 +33,7 @@ export default function Home() {
       </Head>
       {status === "authenticated" ? (
         <div>
-          {data && <h1> hi {data.user?.name}</h1>}
+          {data && <h1> Hi {data.user?.name}</h1>}
           <button onClick={() => signOut()}>sign out</button>;
           <HomePage />
         </div>
