@@ -1,31 +1,31 @@
-import { useState, useEffect } from "react";
+import { getSession } from "next-auth/react";
+import getTime from "./useGetTime";
 
-interface Response<T> {
-  data: T | null;
-}
-
-const useFetch = <T>(url: string, headersParams: object): Response<T> => {
-  const [data, setData] = useState<T | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url, {
-          headers: headersParams as HeadersInit,
-        });
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const json = await response.json();
-        setData(json);
-      } catch (error) {
-        throw new Error(`Error: ${error}`);
-      }
-    };
-    fetchData();
-  }, []);
-
-  return { data };
+type CalendarItem = {
+  accessRole: string;
+  defaultReminders: string[];
+  etag: string;
+  items: object[];
+  kind: string;
+  nextSyncToken: string;
+  summary: string;
+  timeZone: string;
+  updated: string;
 };
 
-export default useFetch;
+const fetchData = async () => {
+  const session = await getSession();
+  const timePeriod = getTime();
+  const response = await fetch(
+    `https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${timePeriod.startTime}&timeMax=${timePeriod.endTime}`,
+    {
+      headers: {
+        Authorization: `Bearer ${session.accessToken}`,
+      },
+    }
+  );
+
+  const fetchedData = await response.json();
+  return fetchedData as CalendarItem;
+};
+export default fetchData;

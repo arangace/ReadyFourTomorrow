@@ -1,5 +1,5 @@
 import Head from "next/head";
-import HomePage from "../components/HomePage";
+import HomePage from "../components/homePage/HomePage";
 import LoginPage from "../components/loginPage/LoginPage";
 import { Suspense, useEffect, useState } from "react";
 import { useSession, signOut, getSession } from "next-auth/react";
@@ -32,11 +32,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {status === "authenticated" ? (
-        <div>
-          {data && <h1> Hi {data.user?.name}</h1>}
-          <button onClick={() => signOut()}>sign out</button>;
+        <Suspense fallback={<div>Loading...</div>}>
           <HomePage />
-        </div>
+        </Suspense>
       ) : (
         <LoginPage loginButtonHandler={loginHandler} />
       )}
