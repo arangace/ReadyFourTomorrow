@@ -4,6 +4,7 @@ import { Flex } from "@/shared/globalStyles";
 import { getSession, signOut, useSession } from "next-auth/react";
 import { MainContent, SignOutButton } from "./HomeStyles";
 import fetchData from "../hooks/useFetch";
+import { CalendarItem } from "@/types/types";
 
 type UserEvents = {
   name: string;
@@ -16,22 +17,25 @@ const HomePage = () => {
   useEffect(() => {
     const getCalendarData = async () => {
       const calendarEvents = await fetchData();
-      calendarEvents.items.map((event) => {
-        console.log(event.summary);
-        console.log(event.start.dateTime);
-        let time = new Date(event.start.dateTime);
-        let hours = time.getHours();
-        let minutes = time.getMinutes().toString();
-        if (minutes.length !== 2) {
-          minutes = "0" + minutes;
-        }
-        if (hours) {
-          hours = hours - 12;
-        }
-        let startTime = `${hours}:${minutes}`;
-        let newEvent = { name: event.summary, time: startTime };
-        setUserEvents((prevEvents) => [...prevEvents, newEvent]);
-      });
+      console.log(calendarEvents);
+      if (calendarEvents) {
+        calendarEvents.items.map((event) => {
+          console.log(event.summary);
+          console.log(event.start.dateTime);
+          let time = new Date(event.start.dateTime);
+          let hours = time.getHours();
+          let minutes = time.getMinutes().toString();
+          if (minutes.length !== 2) {
+            minutes = "0" + minutes;
+          }
+          if (hours) {
+            hours = hours - 12;
+          }
+          let startTime = `${hours}:${minutes}`;
+          let newEvent = { name: event.summary, time: startTime };
+          setUserEvents((prevEvents) => [...prevEvents, newEvent]);
+        });
+      }
     };
     getCalendarData();
   }, []);
@@ -41,8 +45,9 @@ const HomePage = () => {
       {data && <h1>Hi {data.user?.name}, are you Ready For Tomorrow?</h1>}
       {userEvents.map((event, index) => (
         <>
-          <div key={index}>{event.name}</div>
-          <div>{event.time}</div>
+          <div key={index}>
+            {event.name} {event.time}
+          </div>
         </>
       ))}
       <SignOutButton onClick={() => signOut()}>sign out</SignOutButton>;
