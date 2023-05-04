@@ -13,7 +13,10 @@ type UserEvents = {
 const HomePage = () => {
   const { data, status } = useSession();
   const [userEvents, setUserEvents] = useState<UserEvents>([]);
-
+  const handleSignOut = () => {
+    console.log("signing out..");
+    signOut({ callbackUrl: "/login" });
+  };
   useEffect(() => {
     const getCalendarData = async () => {
       const calendarEvents = await fetchData();
@@ -44,13 +47,11 @@ const HomePage = () => {
     <MainContent>
       {data && <h1>Hi {data.user?.name}, are you Ready For Tomorrow?</h1>}
       {userEvents.map((event, index) => (
-        <>
-          <div key={index}>
-            {event.name} {event.time}
-          </div>
-        </>
+        <div key={index}>
+          {event.name} {event.time}
+        </div>
       ))}
-      <SignOutButton onClick={() => signOut()}>sign out</SignOutButton>;
+      <SignOutButton onClick={handleSignOut}>sign out</SignOutButton>;
     </MainContent>
   );
 };

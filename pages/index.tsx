@@ -1,24 +1,22 @@
 import Head from "next/head";
 import HomePage from "../components/homePage/HomePage";
-import LoginPage from "../components/loginPage/LoginPage";
+import LoginPage from "./login";
 import { Suspense, useEffect, useState } from "react";
 import { useSession, signOut, getSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+
   const loginHandler = () => {
     setIsLoggedIn(!isLoggedIn);
   };
   const { data, status } = useSession();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const session = await getSession();
-      // console.log("session");
-      // console.log(session);
-    };
-    fetchData();
-  }, [data]);
+  if (status === "unauthenticated") {
+    signOut({ callbackUrl: "/login" });
+  }
 
   return (
     <>
@@ -36,7 +34,7 @@ export default function Home() {
           <HomePage />
         </Suspense>
       ) : (
-        <LoginPage loginButtonHandler={loginHandler} />
+        <div>User not logged in, redirecting..</div>
       )}
     </>
   );
