@@ -14,9 +14,12 @@ type UserEvents = {
 const HomePage = () => {
   const { data, status } = useSession();
   const [userEvents, setUserEvents] = useState<UserEvents>([]);
-
-  const getCalendarData = async () => {
-    try {
+  const handleSignOut = () => {
+    console.log("signing out..");
+    signOut({ callbackUrl: "/login" });
+  };
+  useEffect(() => {
+    const getCalendarData = async () => {
       const calendarEvents = await fetchData();
       console.log(calendarEvents);
       if (calendarEvents) {
@@ -37,24 +40,20 @@ const HomePage = () => {
           setUserEvents((prevEvents) => [...prevEvents, newEvent]);
         });
       }
-    } catch (err: Error | unknown) {
-      throw new Error(`Error occurred: ${err}`);
-    }
-  };
-  getCalendarData();
+    };
+    getCalendarData();
+  }, []);
 
   return (
     <MainContent>
-      <Clock />
+      {/* <Clock /> */}
       {data && <h1>Hi {data.user?.name}, are you Ready For Tomorrow?</h1>}
       {userEvents.map((event, index) => (
-        <>
-          <div key={index}>
-            {event.name} {event.time}
-          </div>
-        </>
+        <div key={index}>
+          {event.name} {event.time}
+        </div>
       ))}
-      <SignOutButton onClick={() => signOut()}>sign out</SignOutButton>;
+      <SignOutButton onClick={handleSignOut}>sign out</SignOutButton>;
     </MainContent>
   );
 };
