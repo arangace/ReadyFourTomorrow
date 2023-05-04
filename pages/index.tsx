@@ -13,7 +13,7 @@ export default function Home() {
     setIsLoggedIn(!isLoggedIn);
   };
   const { data, status } = useSession();
-
+  console.log(status);
   if (status === "unauthenticated") {
     signOut({ callbackUrl: "/login" });
   }
