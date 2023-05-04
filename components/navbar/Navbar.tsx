@@ -10,7 +10,6 @@ const Navbar = () => {
       <SignOutButton onClick={() => signOut({ callbackUrl: "/login" })}>
         sign out
       </SignOutButton>
-      ;
     </NavContainer>
   );
 };

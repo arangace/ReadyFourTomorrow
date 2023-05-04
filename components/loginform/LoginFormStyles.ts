@@ -1,4 +1,4 @@
-import { Button, Flex, FlexColumn } from "@/shared/globalStyles";
+import { Button, Flex, FlexColumn } from "@/styles/shared/globalStyles";
 import styled from "styled-components";
 import { Form } from "formik/dist/Form";
 export const LoginButton = styled(Button)`

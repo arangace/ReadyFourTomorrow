@@ -28,12 +28,16 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#7056b3" />
       </Head>
-      {status === "authenticated" ? (
+      {status === "authenticated" && (
         <Suspense fallback={<div>Loading...</div>}>
           <HomePage />
         </Suspense>
-      ) : (
+      )}
+      {status === "loading" && <div>Loading..</div>}
+      {status === "unauthenticated" && (
         <div>User not logged in, redirecting..</div>
       )}
     </>

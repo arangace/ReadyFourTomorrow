@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexColumn, Button, Flex } from "@/shared/globalStyles";
+import { FlexColumn, Button, Flex } from "@/styles/shared/globalStyles";
 export const Container = styled(Flex)`
   margin-top: 3rem;
 `;

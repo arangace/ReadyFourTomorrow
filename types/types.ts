@@ -8,4 +8,5 @@ export type CalendarItem = {
   summary: string;
   timeZone?: string;
   updated?: string;
+  error?: object;
 };

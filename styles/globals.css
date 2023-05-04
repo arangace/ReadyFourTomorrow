@@ -17,7 +17,7 @@ body {
 }
 
 body {
-  color: rgb(var(--text-colour));
+  color: var(--text-colour);
   height: 100vh;
   background: linear-gradient(to bottom right, #7056b3, #91c4e1);
 }

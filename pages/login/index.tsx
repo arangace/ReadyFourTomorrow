@@ -16,7 +16,7 @@ const LoginPage = ({ loginButtonHandler }: LoginPageInformation) => {
         <MainHeader>Login</MainHeader>
         {/* <LoginForm loginButtonHandler={loginButtonHandler}></LoginForm> */}
         <LoginButton onClick={() => signIn("google", { callbackUrl: "/" })}>
-          Sign in with gooogle
+          Sign in with google
         </LoginButton>
       </Wrapper>
     </Container>
