@@ -15,35 +15,33 @@ const HomePage = () => {
   const { data, status } = useSession();
   const [userEvents, setUserEvents] = useState<UserEvents>([]);
 
-  useEffect(() => {
-    const getCalendarData = async () => {
-      try {
-        const calendarEvents = await fetchData();
-        console.log(calendarEvents);
-        if (calendarEvents) {
-          calendarEvents.items.map((event) => {
-            console.log(event.summary);
-            console.log(event.start.dateTime);
-            let time = new Date(event.start.dateTime);
-            let hours = time.getHours();
-            let minutes = time.getMinutes().toString();
-            // if (minutes.length !== 2) {
-            //   minutes = "0" + minutes;
-            // }
-            // if (hours) {
-            //   hours = hours - 12;
-            // }
-            let startTime = `${hours}:${minutes}`;
-            let newEvent = { name: event.summary, time: startTime };
-            setUserEvents((prevEvents) => [...prevEvents, newEvent]);
-          });
-        }
-      } catch (err: Error | unknown) {
-        throw new Error(`Error occurred: ${err}`);
+  const getCalendarData = async () => {
+    try {
+      const calendarEvents = await fetchData();
+      console.log(calendarEvents);
+      if (calendarEvents) {
+        calendarEvents.items.map((event) => {
+          console.log(event.summary);
+          console.log(event.start.dateTime);
+          let time = new Date(event.start.dateTime);
+          let hours = time.getHours();
+          let minutes = time.getMinutes().toString();
+          // if (minutes.length !== 2) {
+          //   minutes = "0" + minutes;
+          // }
+          // if (hours) {
+          //   hours = hours - 12;
+          // }
+          let startTime = `${hours}:${minutes}`;
+          let newEvent = { name: event.summary, time: startTime };
+          setUserEvents((prevEvents) => [...prevEvents, newEvent]);
+        });
       }
-    };
-    getCalendarData();
-  }, []);
+    } catch (err: Error | unknown) {
+      throw new Error(`Error occurred: ${err}`);
+    }
+  };
+  getCalendarData();
 
   return (
     <MainContent>
