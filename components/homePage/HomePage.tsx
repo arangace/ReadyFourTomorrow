@@ -26,12 +26,12 @@ const HomePage = () => {
           let time = new Date(event.start.dateTime);
           let hours = time.getHours();
           let minutes = time.getMinutes().toString();
-          if (minutes.length !== 2) {
-            minutes = "0" + minutes;
-          }
-          if (hours) {
-            hours = hours - 12;
-          }
+          // if (minutes.length !== 2) {
+          //   minutes = "0" + minutes;
+          // }
+          // if (hours) {
+          //   hours = hours - 12;
+          // }
           let startTime = `${hours}:${minutes}`;
           let newEvent = { name: event.summary, time: startTime };
           setUserEvents((prevEvents) => [...prevEvents, newEvent]);
