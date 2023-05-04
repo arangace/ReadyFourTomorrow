@@ -38,7 +38,7 @@ const HomePage = () => {
             setUserEvents((prevEvents) => [...prevEvents, newEvent]);
           });
         }
-      } catch (err: Error) {
+      } catch (err: Error | unknown) {
         throw new Error(`Error occurred: ${err}`);
       }
     };
