@@ -17,25 +17,29 @@ const HomePage = () => {
 
   useEffect(() => {
     const getCalendarData = async () => {
-      const calendarEvents = await fetchData();
-      console.log(calendarEvents);
-      if (calendarEvents) {
-        calendarEvents.items.map((event) => {
-          console.log(event.summary);
-          console.log(event.start.dateTime);
-          let time = new Date(event.start.dateTime);
-          let hours = time.getHours();
-          let minutes = time.getMinutes().toString();
-          // if (minutes.length !== 2) {
-          //   minutes = "0" + minutes;
-          // }
-          // if (hours) {
-          //   hours = hours - 12;
-          // }
-          let startTime = `${hours}:${minutes}`;
-          let newEvent = { name: event.summary, time: startTime };
-          setUserEvents((prevEvents) => [...prevEvents, newEvent]);
-        });
+      try {
+        const calendarEvents = await fetchData();
+        console.log(calendarEvents);
+        if (calendarEvents) {
+          calendarEvents.items.map((event) => {
+            console.log(event.summary);
+            console.log(event.start.dateTime);
+            let time = new Date(event.start.dateTime);
+            let hours = time.getHours();
+            let minutes = time.getMinutes().toString();
+            // if (minutes.length !== 2) {
+            //   minutes = "0" + minutes;
+            // }
+            // if (hours) {
+            //   hours = hours - 12;
+            // }
+            let startTime = `${hours}:${minutes}`;
+            let newEvent = { name: event.summary, time: startTime };
+            setUserEvents((prevEvents) => [...prevEvents, newEvent]);
+          });
+        }
+      } catch (err: Error) {
+        throw new Error(`Error occurred: ${err}`);
       }
     };
     getCalendarData();
