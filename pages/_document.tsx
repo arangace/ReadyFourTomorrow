@@ -37,6 +37,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link rel="icon" href="/images/R4T-logo.png" />
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="apple-touch-icon" href="/images/R4T-logo.png"></link>
+          <meta name="theme-color" content="#7056b3" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link

@@ -5,6 +5,7 @@ import { getSession, signOut, useSession } from "next-auth/react";
 import { MainContent, SignOutButton } from "./HomeStyles";
 import fetchData from "../hooks/useFetch";
 import { CalendarItem } from "@/types/types";
+import Clock from "../clock/Clock";
 
 type UserEvents = {
   name: string;
@@ -42,6 +43,7 @@ const HomePage = () => {
 
   return (
     <MainContent>
+      <Clock />
       {data && <h1>Hi {data.user?.name}, are you Ready For Tomorrow?</h1>}
       {userEvents.map((event, index) => (
         <>
