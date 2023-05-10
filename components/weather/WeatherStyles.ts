@@ -16,3 +16,10 @@ export const Forecast = styled.section`
   padding: 2.5rem;
   border-radius: 1rem;
 `;
+export const WeatherPrompt = styled.h2`
+  color: var(--primary-colour);
+  background-color: white;
+  border-radius: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  text-align: center;
+`;

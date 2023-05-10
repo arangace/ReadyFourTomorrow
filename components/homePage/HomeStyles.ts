@@ -3,6 +3,8 @@ import { FlexColumn, Button, Flex } from "@/styles/shared/globalStyles";
 
 export const MainContent = styled(FlexColumn)`
   padding: 2.5rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
 `;
 export const SignOutButton = styled(Button)`
   padding: 0.5rem;

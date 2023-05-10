@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ClockContainer, ClockItem } from "./ClockStyles";
+import { ClockContainer, ClockItem, ClockSetting } from "./ClockStyles";
 
 const Clock = () => {
   const [time, setTime] = useState(new Date());
@@ -17,6 +17,7 @@ const Clock = () => {
     <ClockContainer>
       <ClockItem>
         {hours}:{minutes < 10 ? "0" + minutes : minutes}
+        <ClockSetting>{amPm}</ClockSetting>
       </ClockItem>
     </ClockContainer>
   );

@@ -13,11 +13,11 @@ import { UserEvents } from "@/types/types";
 const HomePage = () => {
   const { data, status } = useSession();
   const [userEvents, setUserEvents] = useState<UserEvents>([]);
-  const [userNotAuthenticated, setuserNotAuthenticated] = useState(false);
+  const [userAuthenticated, setuserAuthenticated] = useState(false);
   const [loaded, setloaded] = useState(false);
   const handleSignOut = () => {
     console.log("signing out..");
-    setuserNotAuthenticated(true);
+    setuserAuthenticated(true);
     signOut({ callbackUrl: "/login" });
   };
   useEffect(() => {
@@ -36,13 +36,15 @@ const HomePage = () => {
           let time = new Date(event.start.dateTime);
           let hours = time.getHours();
           let minutes = time.getMinutes().toString();
+          let isPm = false;
           if (minutes.length !== 2) {
             minutes = "0" + minutes;
           }
           if (hours) {
             hours = hours - 12;
+            isPm = true;
           }
-          let startTime = `${hours}:${minutes}`;
+          let startTime = `${hours}:${minutes} ${isPm && "pm"}`;
           let newEvent = { name: event.summary, time: startTime };
           setUserEvents((prevEvents) => [...prevEvents, newEvent]);
           setloaded(true);
@@ -52,7 +54,7 @@ const HomePage = () => {
     getCalendarData();
   }, []);
 
-  return userNotAuthenticated ? (
+  return userAuthenticated ? (
     <div>User not authenticated, redirecting..</div>
   ) : (
     <MainContent>

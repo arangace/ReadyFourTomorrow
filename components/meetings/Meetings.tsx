@@ -1,6 +1,12 @@
 import React from "react";
 import { UserEvents } from "@/types/types";
-import { MeetingsContainer } from "./MeetingsStyles";
+import {
+  MeetingHeading,
+  MeetingItem,
+  MeetingName,
+  MeetingTime,
+  MeetingsContainer,
+} from "./MeetingsStyles";
 
 type Meetings = {
   userEvents: UserEvents;
@@ -10,13 +16,14 @@ type Meetings = {
 const Meetings = ({ userEvents, loaded }: Meetings) => {
   return (
     <MeetingsContainer>
-      <h2>Meetings</h2>
+      <MeetingHeading>Meetings</MeetingHeading>
       {loaded &&
         (userEvents.length !== 0
           ? userEvents.map((event, index) => (
-              <span key={index}>
-                {event.name} {event.time}
-              </span>
+              <MeetingItem key={index}>
+                <MeetingName>{event.name}</MeetingName>
+                <MeetingTime>{event.time}</MeetingTime>
+              </MeetingItem>
             ))
           : "You have no events for tomorrow! Enjoy your day.")}
     </MeetingsContainer>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 import { WeatherForecast } from "@/types/types";
+import { WeatherPrompt } from "./WeatherStyles";
 type Location = {
   lat: number;
   long: number;
@@ -109,8 +110,11 @@ const Weather = () => {
 
   return (
     <div>
-      {locationEnabled ? "" : "Location disbled, please enable location"}
-      {weatherForecast && <WeatherCard weatherReport={weatherForecast} />}
+      {locationEnabled ? (
+        weatherForecast && <WeatherCard weatherReport={weatherForecast} />
+      ) : (
+        <WeatherPrompt>Location disabled, please enable location</WeatherPrompt>
+      )}
     </div>
   );
 };
