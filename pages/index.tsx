@@ -32,14 +32,12 @@ export default function Home() {
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#7056b3" />
       </Head>
-      {status === "authenticated" && (
+      {status === "authenticated" ? (
         <Suspense fallback={<UserActionPrompt>Loading...</UserActionPrompt>}>
           <HomePage />
         </Suspense>
-      )}
-      {status === "loading" && <div>Loading..</div>}
-      {status === "unauthenticated" && (
-        <div>User not logged in, redirecting..</div>
+      ) : (
+        <UserActionPrompt>User not logged in, redirecting..</UserActionPrompt>
       )}
     </>
   );
