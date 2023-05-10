@@ -27,3 +27,10 @@ export const Button = styled.button`
     background-color: var(--text-colour);
   }
 `;
+export const UserActionPrompt = styled.h2`
+  color: var(--primary-colour);
+  background-color: white;
+  border-radius: 1rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  text-align: center;
+`;

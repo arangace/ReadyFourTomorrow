@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled, { CSSProperties, Keyframes } from "styled-components";
-import { Flex } from "@/styles/shared/globalStyles";
+import { Flex, UserActionPrompt } from "@/styles/shared/globalStyles";
 import { getSession, signOut, useSession } from "next-auth/react";
 import { MainContent, SignOutButton, SummaryInformation } from "./HomeStyles";
 import fetchData from "../hooks/useFetch";
@@ -55,7 +55,7 @@ const HomePage = () => {
   }, []);
 
   return userAuthenticated ? (
-    <div>User not authenticated, redirecting..</div>
+    <UserActionPrompt>User not authenticated, redirecting..</UserActionPrompt>
   ) : (
     <MainContent>
       <SummaryInformation>

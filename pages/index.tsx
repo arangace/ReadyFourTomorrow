@@ -4,6 +4,7 @@ import LoginPage from "./login";
 import { Suspense, useEffect, useState } from "react";
 import { useSession, signOut, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { UserActionPrompt } from "@/styles/shared/globalStyles";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,7 +33,7 @@ export default function Home() {
         <meta name="theme-color" content="#7056b3" />
       </Head>
       {status === "authenticated" && (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<UserActionPrompt>Loading...</UserActionPrompt>}>
           <HomePage />
         </Suspense>
       )}

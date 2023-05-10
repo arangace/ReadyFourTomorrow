@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WeatherCard from "./WeatherCard";
 import { WeatherForecast } from "@/types/types";
-import { WeatherPrompt } from "./WeatherStyles";
+import { UserActionPrompt } from "@/styles/shared/globalStyles";
 type Location = {
   lat: number;
   long: number;
@@ -113,7 +113,9 @@ const Weather = () => {
       {locationEnabled ? (
         weatherForecast && <WeatherCard weatherReport={weatherForecast} />
       ) : (
-        <WeatherPrompt>Location disabled, please enable location</WeatherPrompt>
+        <UserActionPrompt>
+          Location disabled, please enable location
+        </UserActionPrompt>
       )}
     </div>
   );
