@@ -10,3 +10,19 @@ export type CalendarItem = {
   updated?: string;
   error?: object;
 };
+export type WeatherForecast = {
+  weather: {
+    morningConditions: string;
+    eveningConditions: string;
+    averageCondition: string;
+  };
+  rainChance: string;
+  snowChance: string;
+  temp: number;
+  windy: string;
+  uv: string;
+};
+export type UserEvents = {
+  name: string;
+  time: string;
+}[];
