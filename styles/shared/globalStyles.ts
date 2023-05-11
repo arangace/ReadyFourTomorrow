@@ -16,7 +16,11 @@ export const UserActionPrompt = styled.h2`
   color: var(--primary-colour);
   background-color: white;
   border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  margin: 0.5rem 2.5rem 0.5rem 2.5rem;
   text-align: center;
 `;
 
