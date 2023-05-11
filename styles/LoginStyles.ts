@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { FlexColumn, Button, Flex } from "@/styles/shared/globalStyles";
-export const Container = styled(Flex)`
-  margin-top: 3rem;
-`;
+export const Container = styled(Flex)``;
 export const MainHeader = styled.h1`
   font-size: 3.5rem;
   color: var(--primary-colour);
+  margin-top: 0;
 `;
 
 export const Wrapper = styled(FlexColumn)`
@@ -13,6 +12,7 @@ export const Wrapper = styled(FlexColumn)`
   background-color: white;
   padding: 2.5rem;
   margin: 2.5rem;
+  justify-content: space-around;
 `;
 export const LoginButton = styled(Button)`
   padding: 0.5rem;

@@ -3,7 +3,6 @@ import { FlexColumn } from "@/styles/shared/globalStyles";
 
 export const WeatherContainer = styled(FlexColumn)`
   padding: 2rem;
-  border: 1px solid red;
 `;
 export const SummaryContainer = styled(FlexColumn)`
   padding: 0 2.5rem 0 2.5rem;

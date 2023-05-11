@@ -2,7 +2,11 @@ export type CalendarItem = {
   accessRole?: string;
   defaultReminders?: string[];
   etag?: string;
-  items: { summary: string; start: { dateTime: string; timeZone: string } }[];
+  items: {
+    summary: string;
+    start: { dateTime: string; timeZone: string };
+    status: string;
+  }[];
   kind?: string;
   nextSyncToken?: string;
   summary: string;

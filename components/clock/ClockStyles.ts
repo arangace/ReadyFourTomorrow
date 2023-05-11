@@ -8,6 +8,7 @@ export const ClockItem = styled(Flex)`
   font-size: 7.5rem;
   align-items: flex-start;
   justify-content: flex-start;
+  padding-left: 1rem;
 `;
 export const ClockSetting = styled.span`
   font-size: 2.5rem;
