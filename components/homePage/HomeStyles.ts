@@ -8,8 +8,6 @@ import {
 
 export const MainContent = styled(FlexColumn)`
   padding: 2.5rem;
-  margin-left: 15rem;
-  margin-right: 15rem;
 `;
 export const SignOutButton = styled(ButtonInverted)`
   color: var(--primary-colour);
@@ -17,4 +15,3 @@ export const SignOutButton = styled(ButtonInverted)`
   border-radius: 0.5rem;
   font-size: 1.5rem;
 `;
-export const SummaryInformation = styled(FlexColumn)``;

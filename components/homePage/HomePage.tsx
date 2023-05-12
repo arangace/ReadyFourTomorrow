@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled, { CSSProperties, Keyframes } from "styled-components";
 import { Flex, UserActionPrompt } from "@/styles/shared/globalStyles";
 import { getSession, signOut, useSession } from "next-auth/react";
-import { MainContent, SignOutButton, SummaryInformation } from "./HomeStyles";
+import { MainContent, SignOutButton } from "./HomeStyles";
 import fetchData from "../hooks/useFetch";
 import { CalendarItem } from "@/types/types";
 import Clock from "../clock/Clock";
@@ -15,9 +15,9 @@ const HomePage = () => {
   const [userEvents, setUserEvents] = useState<UserEvents>([]);
   const [userAuthenticated, setuserAuthenticated] = useState(false);
   const [loaded, setloaded] = useState(false);
+
   const handleSignOut = () => {
     console.log("signing out..");
-    setuserAuthenticated(true);
     signOut({ callbackUrl: "/login" });
   };
   useEffect(() => {
@@ -29,7 +29,11 @@ const HomePage = () => {
           console.log("User not authenticated");
           handleSignOut();
           return;
+        } else if (calendarEvents.items.length === 0) {
+          setloaded(true);
+          return;
         }
+
         calendarEvents.items.map((event) => {
           if (event.status !== "cancelled") {
             console.log("event");
@@ -63,10 +67,8 @@ const HomePage = () => {
     <UserActionPrompt>User not authenticated, redirecting..</UserActionPrompt>
   ) : (
     <MainContent>
-      <SummaryInformation>
-        <Clock />
-        <Weather />
-      </SummaryInformation>
+      <Clock />
+      <Weather />
       {loaded && <Meetings loaded={loaded} userEvents={userEvents} />}
     </MainContent>
   );
