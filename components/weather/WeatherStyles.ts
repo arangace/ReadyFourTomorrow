@@ -1,17 +1,26 @@
 import styled from "styled-components";
-import { FlexColumn } from "@/styles/shared/globalStyles";
+import { Card, FlexColumn } from "@/styles/shared/globalStyles";
 
 export const WeatherContainer = styled(FlexColumn)`
-  padding: 2rem;
+  padding-bottom: 2.5rem;
 `;
-export const SummaryContainer = styled(FlexColumn)`
-  padding: 0 2.5rem 0 2.5rem;
+export const Summary = styled(FlexColumn)`
   margin-bottom: 2.5rem;
   font-size: 1.5rem;
 `;
-export const Forecast = styled.section`
-  color: black;
-  background-color: white;
-  padding: 2.5rem;
-  border-radius: 1rem;
+export const Forecast = styled(Card)`
+  * {
+    text-align: left;
+  }
+`;
+export const Temperature = styled.h2`
+  font-size: 3rem;
+  margin-bottom: 0;
+`;
+export const WeatherCondition = styled.h3`
+  margin-top: 0.5rem;
+  font-size: 2rem;
+`;
+export const WeatherForecastInformation = styled.p`
+  font-size: 1.5rem;
 `;

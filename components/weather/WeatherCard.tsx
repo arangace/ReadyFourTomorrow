@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { WeatherForecast } from "@/types/types";
-import { Forecast, SummaryContainer, WeatherContainer } from "./WeatherStyles";
+import {
+  Forecast,
+  Summary,
+  WeatherContainer,
+  Temperature,
+  WeatherCondition,
+  WeatherForecastInformation,
+} from "./WeatherStyles";
 
 type WeatherCard = {
   weatherReport: WeatherForecast;
@@ -16,35 +23,35 @@ const WeatherCard = ({ weatherReport }: WeatherCard) => {
 
   return (
     <WeatherContainer>
-      <SummaryContainer>
-        <h2>
+      <Summary>
+        <Temperature>
           {weatherReport.temp} <span>&#8451;</span>
-        </h2>
-        <h3>{weatherReport.weather.averageCondition}</h3>
-      </SummaryContainer>
+        </Temperature>
+        <WeatherCondition>
+          {weatherReport.weather.averageCondition}
+        </WeatherCondition>
+      </Summary>
       <Forecast>
         <h2>Tomorrows Weather</h2>
-        <h3>Here{`'`}s tomorrows weather forecast</h3>
-        <p>
-          {weatherReport.rainChance !== "none" && (
-            <span>{weatherReport.rainChance}</span>
-          )}
+        <WeatherForecastInformation>
+          {`Here's tomorrows weather forecast. `}
+          <span>{`${weatherReport.weather.averageCondition}.`}</span>
           {weatherReport.snowChance !== "none" && (
             <span>{weatherReport.snowChance}</span>
           )}
-          {` With an average day temperature of ${weatherReport.temp}`}&#8451;
+          {` With an average day temperature of ${weatherReport.temp} `}&#8451;
           {"."}
-          {` There is ${weatherReport.weather.morningConditions} in the morning`}
-          {` and ${weatherReport.weather.eveningConditions} in the evening`}
+          {` ${weatherReport.weather.morningConditions} in the morning,`}
+          {` and ${weatherReport.weather.eveningConditions} in the evening.`}
           {weatherReport.weather.morningConditions.includes("rain") ||
           weatherReport.weather.eveningConditions.includes("rain")
-            ? ", so it is recommended to bring an umbrella."
+            ? " It is recommended to bring an umbrella."
             : null}
           {weatherReport.windy === "It will be windy."
             ? `${weatherReport.windy}, do take extra care.`
             : null}
-          {` Lastly, ${weatherReport.uv}`}
-        </p>
+          {` Lastly, ${weatherReport.uv} have a good day!`}
+        </WeatherForecastInformation>
       </Forecast>
     </WeatherContainer>
   );

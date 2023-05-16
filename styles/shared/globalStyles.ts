@@ -21,7 +21,6 @@ export const UserActionPrompt = styled.h2`
   align-items: center;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   margin: 0.5rem 2.5rem 0.5rem 2.5rem;
-  text-align: center;
 `;
 
 export const Button = styled.button`
@@ -54,4 +53,10 @@ export const ButtonInverted = styled.button`
     color: var(--text-colour);
     background-color: var(--primary-colour);
   }
+`;
+export const Card = styled.section`
+  color: black;
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 1rem;
 `;
