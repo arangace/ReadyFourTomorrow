@@ -1,12 +1,14 @@
 const getTime = () => {
   const currentDate = new Date();
-  const formattedDate = currentDate.toISOString();
-  const tomorrowDate = new Date(
-    currentDate.getTime() + 24 * 60 * 60 * 1000
-  ).toISOString();
+  currentDate.setHours(24, 0, 0, 0);
+
+  const tomorrowDate = new Date(currentDate);
+  tomorrowDate.setDate(currentDate.getDate() + 1);
+  const startTime = currentDate.toISOString();
+  const endTime = tomorrowDate.toISOString();
   return {
-    startTime: formattedDate,
-    endTime: tomorrowDate,
+    startTime: startTime,
+    endTime: endTime,
   };
 };
 

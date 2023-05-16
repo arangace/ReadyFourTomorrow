@@ -20,6 +20,7 @@ const HomePage = () => {
     console.log("signing out..");
     signOut({ callbackUrl: "/login" });
   };
+
   useEffect(() => {
     const getCalendarData = async () => {
       const calendarEvents = await fetchData();
