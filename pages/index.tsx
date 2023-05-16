@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Ready For Tomorrow</title>
+        <title>Ready Four Tomorrow</title>
         <meta
           name="description"
           content="An app designed to help you be ready for tomorrow, telling you what you have scheduled for the next day"

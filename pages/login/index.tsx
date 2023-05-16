@@ -15,7 +15,7 @@ const LoginPage = ({ loginButtonHandler }: LoginPageInformation) => {
   return (
     <>
       <Head>
-        <title>Ready For Tomorrow | Login</title>
+        <title>Ready Four Tomorrow | Login</title>
       </Head>
       <Container>
         <Wrapper>
