@@ -9,7 +9,7 @@ export default function Layout({ children }: Layout) {
   return (
     <>
       <Head>
-        <title>Ready For Tomorrow</title>
+        <title>Ready Four Tomorrow</title>
       </Head>
       <NavBar />
       <main>{children}</main>

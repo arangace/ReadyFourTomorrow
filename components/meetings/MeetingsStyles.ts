@@ -15,6 +15,7 @@ export const MeetingItem = styled(Card)`
   font-size: 2rem;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 2.5rem;
 `;
 export const MeetingName = styled.span``;
 export const MeetingTime = styled.span`
