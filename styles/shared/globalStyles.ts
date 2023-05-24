@@ -28,11 +28,12 @@ export const Button = styled.button`
   background-color: var(--primary-colour);
   color: var(--text-colour);
   border: 2px solid var(--primary-colour);
+  border-radius: 1rem;
   padding: initial;
   margin: initial;
   outline: initial;
   cursor: pointer;
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding: 0.5rem 1rem;
   color: ${(props) => props.color || "white"};
   &:hover {
     color: var(--primary-colour);

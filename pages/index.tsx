@@ -5,8 +5,9 @@ import { Suspense, useEffect, useState } from "react";
 import { useSession, signOut, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { UserActionPrompt } from "@/styles/shared/globalStyles";
+import Home from "./home";
 
-export default function Home() {
+export default function Index() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
 
@@ -16,7 +17,7 @@ export default function Home() {
   const { data, status } = useSession();
   console.log(status);
   if (status === "unauthenticated") {
-    signOut({ callbackUrl: "/login" });
+    signOut({ callbackUrl: "/home" });
   }
 
   return (
@@ -37,7 +38,7 @@ export default function Home() {
           <HomePage />
         </Suspense>
       ) : (
-        <UserActionPrompt>User not logged in, redirecting..</UserActionPrompt>
+        <Home />
       )}
     </>
   );

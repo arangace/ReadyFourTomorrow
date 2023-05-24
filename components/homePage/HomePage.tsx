@@ -13,7 +13,6 @@ import { UserEvents } from "@/types/types";
 const HomePage = () => {
   const { data, status } = useSession();
   const [userEvents, setUserEvents] = useState<UserEvents>([]);
-  const [userAuthenticated, setuserAuthenticated] = useState(false);
   const [loaded, setloaded] = useState(false);
 
   const handleSignOut = () => {
@@ -64,9 +63,7 @@ const HomePage = () => {
     getCalendarData();
   }, []);
 
-  return userAuthenticated ? (
-    <UserActionPrompt>User not authenticated, redirecting..</UserActionPrompt>
-  ) : (
+  return (
     <MainContent>
       <Clock />
       <Weather />

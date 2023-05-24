@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <NavContainer>
       {status === "authenticated" && (
-        <SignOutButton onClick={() => signOut({ callbackUrl: "/login" })}>
+        <SignOutButton onClick={() => signOut({ callbackUrl: "/home" })}>
           Sign out
         </SignOutButton>
       )}
