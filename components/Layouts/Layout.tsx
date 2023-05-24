@@ -1,9 +1,8 @@
 import { ReactNode } from "react";
-import NavBar from "./navbar/Navbar";
+import NavBar from "../navbar/Navbar";
 import Head from "next/head";
-type Layout = {
-  children: ReactNode;
-};
+import { Layout } from "@/types/types";
+import FooterComponent from "../footer/Footer";
 
 export default function Layout({ children }: Layout) {
   return (
@@ -13,6 +12,7 @@ export default function Layout({ children }: Layout) {
       </Head>
       <NavBar />
       <main>{children}</main>
+      <FooterComponent />
     </>
   );
 }

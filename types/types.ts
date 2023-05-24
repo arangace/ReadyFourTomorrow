@@ -1,3 +1,8 @@
+import { ReactNode } from "react";
+
+export type Layout = {
+  children: ReactNode;
+};
 export type CalendarItem = {
   accessRole?: string;
   defaultReminders?: string[];

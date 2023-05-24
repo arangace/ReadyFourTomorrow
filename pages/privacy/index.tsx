@@ -1,5 +1,6 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import styles from "./privacyStyles.module.scss";
+import PrivacyLayout from "@/components/Layouts/PrivacyLayout";
 const PrivacyPolicy = () => {
   return (
     <main className={styles.privacy}>
@@ -577,5 +578,11 @@ const PrivacyPolicy = () => {
     </main>
   );
 };
-
+PrivacyPolicy.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <PrivacyLayout>{page}</PrivacyLayout>
+    </>
+  );
+};
 export default PrivacyPolicy;
