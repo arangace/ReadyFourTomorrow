@@ -39,6 +39,10 @@ export const Button = styled.button`
     color: var(--primary-colour);
     background-color: var(--text-colour);
   }
+  &:focus-visible {
+    color: var(--primary-colour);
+    background-color: var(--text-colour);
+  }
 `;
 export const ButtonInverted = styled.button`
   border: initial;

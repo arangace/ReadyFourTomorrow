@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Footer = styled.footer`
+  padding: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2.5rem;
 `;
 export const FooterContainer = styled.ul`
   list-style: none;
