@@ -25,10 +25,10 @@ const WeatherCard = ({ weatherReport }: WeatherCard) => {
     <WeatherContainer>
       <Summary>
         <Temperature>
-          {weatherReport.temp} <span>&#8451;</span>
+          {weatherReport.currentConditions.temp} <span>&#8451;</span>
         </Temperature>
         <WeatherCondition>
-          {weatherReport.weather.averageCondition}
+          {weatherReport.currentConditions.conditions}
         </WeatherCondition>
       </Summary>
       <Forecast>

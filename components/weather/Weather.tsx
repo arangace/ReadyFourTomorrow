@@ -55,9 +55,13 @@ const Weather = () => {
             const tomorrowsWeather = weatherData[1].day;
             const tomorrowsWeatherList = weatherData[1].hour;
             const avgWeather = tomorrowsWeather.condition.text;
+            const todaysWeather = weatherData[0].day;
+            const todaysWeatherForecast = todaysWeather.condition.text;
             console.log("handling weather..");
             const morningWeather = tomorrowsWeatherList[8].condition.text;
             const eveningWeather = tomorrowsWeatherList[17].condition.text;
+            const temperature = tomorrowsWeather.avgtemp_c;
+            const todaysTemperature = todaysWeather.avgtemp_c;
             let rainChance = "";
             if (tomorrowsWeather.daily_will_it_rain === 1) {
               rainChance = "It will rain.";
@@ -74,7 +78,6 @@ const Weather = () => {
             } else {
               snowChance = `There is a ${tomorrowsWeather.daily_chance_of_snow} chance of rain.`;
             }
-            const temperature = tomorrowsWeather.avgtemp_c;
             let isWindy = "";
             if (tomorrowsWeather.maxwind_kph >= 39) {
               isWindy = "It will be windy.";
@@ -93,6 +96,10 @@ const Weather = () => {
                 "It is extremely highly recommended to put on sunscreen.";
             }
             const weather = {
+              currentConditions: {
+                temp: todaysTemperature,
+                conditions: todaysWeatherForecast,
+              },
               weather: {
                 morningConditions: morningWeather,
                 eveningConditions: eveningWeather,

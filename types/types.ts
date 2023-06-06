@@ -20,6 +20,10 @@ export type CalendarItem = {
   error?: object;
 };
 export type WeatherForecast = {
+  currentConditions: {
+    conditions: string;
+    temp: number;
+  };
   weather: {
     morningConditions: string;
     eveningConditions: string;
