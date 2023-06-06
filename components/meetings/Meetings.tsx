@@ -1,5 +1,5 @@
 import React from "react";
-import { UserEvents } from "@/types/types";
+import { MeetingInformation, UserEvents } from "@/types/types";
 import {
   MeetingHeading,
   MeetingItem,
@@ -8,10 +8,6 @@ import {
   MeetingsContainer,
 } from "./MeetingsStyles";
 
-type MeetingInformation = {
-  userEvents: UserEvents;
-  loaded: boolean;
-};
 const Meetings = ({ userEvents, loaded }: MeetingInformation) => {
   return (
     <MeetingsContainer>

@@ -36,7 +36,6 @@ const Weather = () => {
   useEffect(() => {
     const getWeather = async () => {
       if (location) {
-        console.log(location);
         const response = await fetch("/api/weather", {
           method: "POST",
           headers: {
@@ -75,7 +74,6 @@ const Weather = () => {
             } else {
               snowChance = `There is a ${tomorrowsWeather.daily_chance_of_snow} chance of rain.`;
             }
-            console.log(weatherData[1]);
             const temperature = tomorrowsWeather.avgtemp_c;
             let isWindy = "";
             if (tomorrowsWeather.maxwind_kph >= 39) {

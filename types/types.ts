@@ -44,5 +44,9 @@ export type Token = {
     user: { id: string };
   };
 };
+export type MeetingInformation = {
+  userEvents: UserEvents;
+  loaded: boolean;
+};
 export type JwtToken = Pick<Token, "token" | "account" | "profile">;
 export type SessionToken = Pick<Token, "session" | "token">;

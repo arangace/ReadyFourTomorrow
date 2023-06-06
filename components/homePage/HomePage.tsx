@@ -39,20 +39,24 @@ const HomePage = () => {
             console.log("event");
             console.log(event.summary);
             console.log(event.start.dateTime);
-            let time = new Date(event.start.dateTime);
-            let hours = time.getHours();
-            let minutes = time.getMinutes().toString();
-            let isPm = false;
-            if (minutes.length !== 2) {
-              minutes = "0" + minutes;
-            }
-            if (hours >= 12) {
-              isPm = true;
-              if (hours !== 12) {
-                hours = hours - 12;
+            let startTime: string = "";
+            if (event.start.dateTime !== (null || undefined)) {
+              let time = new Date(event.start.dateTime);
+              let hours = time.getHours();
+              let minutes = time.getMinutes().toString();
+              let isPm = false;
+              if (minutes.length !== 2) {
+                minutes = "0" + minutes;
               }
+              if (hours >= 12) {
+                isPm = true;
+                if (hours !== 12) {
+                  hours = hours - 12;
+                }
+              }
+              startTime = `${hours}:${minutes} ${isPm ? "pm" : "am"}`;
             }
-            let startTime = `${hours}:${minutes} ${isPm ? "pm" : "am"}`;
+
             let newEvent = { name: event.summary, time: startTime };
             setUserEvents((prevEvents) => [...prevEvents, newEvent]);
             setloaded(true);

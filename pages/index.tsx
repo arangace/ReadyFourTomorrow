@@ -6,7 +6,12 @@ import { useSession, signOut, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { UserActionPrompt } from "@/styles/shared/globalStyles";
 import Home from "./home";
-
+import { Session } from "next-auth";
+import getTime from "@/components/hooks/useGetTime";
+import { CalendarItem } from "@/types/types";
+interface UserSession extends Session {
+  accessToken: string;
+}
 export default function Index() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();

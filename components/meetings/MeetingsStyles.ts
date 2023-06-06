@@ -20,4 +20,5 @@ export const MeetingItem = styled(Card)`
 export const MeetingName = styled.span``;
 export const MeetingTime = styled.span`
   padding-left: 1rem;
+  white-space: nowrap;
 `;
