@@ -8,8 +8,10 @@ interface UserSession extends Session {
 }
 
 const fetchData = async () => {
+  console.log("fetching..");
   const session = (await getSession()) as UserSession;
   if (session) {
+    console.log("session valid");
     const accessToken = session.accessToken;
     const timePeriod = getTime();
     const response = await fetch(

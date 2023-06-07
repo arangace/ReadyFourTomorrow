@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import styled, { CSSProperties, Keyframes } from "styled-components";
-import { Flex, UserActionPrompt } from "@/styles/shared/globalStyles";
 import { getSession, signOut, useSession } from "next-auth/react";
 import { MainContent, SignOutButton } from "./HomeStyles";
 import fetchData from "../hooks/useFetch";
-import { CalendarItem } from "@/types/types";
 import Clock from "../clock/Clock";
 import Weather from "../weather/Weather";
 import Meetings from "../meetings/Meetings";

@@ -8,11 +8,22 @@ import { UserActionPrompt } from "@/styles/shared/globalStyles";
 import Home from "./home";
 import { Session } from "next-auth";
 import getTime from "@/components/hooks/useGetTime";
-import { CalendarItem } from "@/types/types";
+import { CalendarItem, UserEvents } from "@/types/types";
+import { MainContent } from "@/styles/HomeStyles";
+import Clock from "@/components/clock/Clock";
+import Meetings from "@/components/meetings/Meetings";
+import Weather from "@/components/weather/Weather";
+import fetchData from "@/components/hooks/useFetch";
 interface UserSession extends Session {
   accessToken: string;
 }
-export default function Index() {
+export default function Index({
+  loaded,
+  userEvents,
+}: {
+  loaded: boolean;
+  userEvents: UserEvents;
+}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
 
