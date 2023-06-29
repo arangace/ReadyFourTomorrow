@@ -1,8 +1,7 @@
 import React from "react";
 import { NavContainer } from "./NavbarStyles";
 import { signOut, useSession } from "next-auth/react";
-import { SignOutButton } from "../homePage/HomeStyles";
-
+import { SignOutButton } from "./NavbarStyles";
 const Navbar = () => {
   const { data, status } = useSession();
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getSession, signOut, useSession } from "next-auth/react";
-import { MainContent, SignOutButton } from "./HomeStyles";
+import { MainContent } from "./HomeStyles";
 import fetchData from "../hooks/useFetch";
 import Clock from "../clock/Clock";
 import Weather from "../weather/Weather";
