@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-// Import your reducers here
-import counterReducer from "./weatherSlice";
+import forecastReducer from "./weatherSlice";
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    // Add other reducers here
+    forecast: forecastReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
