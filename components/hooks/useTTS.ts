@@ -1,5 +1,5 @@
-const TextToSpeech = () => {
-  let message = new SpeechSynthesisUtterance("Hello world!");
+const TextToSpeech = (forecastToAnnounce: string) => {
+  let message = new SpeechSynthesisUtterance(forecastToAnnounce);
   const voices = speechSynthesis.getVoices();
   message.voice = voices.find(
     (voice) => voice.lang === "en-GB"

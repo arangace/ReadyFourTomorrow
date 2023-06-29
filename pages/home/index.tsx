@@ -24,6 +24,7 @@ const Home = () => {
       <Description>
         A simple application which provides a summary of your day ahead at the
         click of a button. Making sure you&apos;re prepared for the day ahead!
+        Click the &quot;SUMMARY&quot; button for a spoken summary of your day
         {status !== "authenticated" && (
           <>
             <UserActionPrompt>

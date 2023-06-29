@@ -11,6 +11,7 @@ import {
   WeatherForecastInformation,
 } from "./WeatherStyles";
 import { useEffect } from "react";
+import AudioButton from "../audioButton/AudioButton";
 
 type WeatherCard = {
   weatherReport: WeatherForecast;
@@ -48,10 +49,6 @@ const WeatherCard = ({ weatherReport }: WeatherCard) => {
     getForecast();
   }, []);
 
-  useEffect(() => {
-    console.log(forecast);
-  }, [forecast]);
-
   return (
     <WeatherContainer>
       <Summary>
@@ -62,11 +59,10 @@ const WeatherCard = ({ weatherReport }: WeatherCard) => {
           {weatherReport.currentConditions.conditions}
         </WeatherCondition>
       </Summary>
+      <AudioButton />
       <Forecast>
         <h2>Tomorrows Weather</h2>
-        <WeatherForecastInformation>
-          {weatherForecast}
-        </WeatherForecastInformation>
+        <WeatherForecastInformation>{forecast}</WeatherForecastInformation>
       </Forecast>
     </WeatherContainer>
   );

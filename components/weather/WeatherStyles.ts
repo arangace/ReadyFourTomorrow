@@ -5,7 +5,6 @@ export const WeatherContainer = styled(FlexColumn)`
   padding-bottom: 2.5rem;
 `;
 export const Summary = styled(FlexColumn)`
-  margin-bottom: 2.5rem;
   font-size: 1.5rem;
 `;
 export const Forecast = styled(Card)`
