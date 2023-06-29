@@ -42,7 +42,7 @@ const WeatherCard = ({ weatherReport }: WeatherCard) => {
   }
   ${`. Lastly, ${weatherReport.uv} Have a good day!`}`;
   const handleIncrementByAmount = () => {
-    dispatch(incrementByAmount(weatherForecast));
+    // dispatch(incrementByAmount(weatherForecast));
   };
   useEffect(() => {
     handleIncrementByAmount();
