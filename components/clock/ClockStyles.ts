@@ -13,6 +13,6 @@ export const ClockItem = styled(Flex)`
 export const ClockSetting = styled.span`
   font-size: 2.5rem;
   align-self: flex-end;
-  padding-left: 1rem;
+  padding-left: 2rem;
   padding-bottom: 1.75rem;
 `;
