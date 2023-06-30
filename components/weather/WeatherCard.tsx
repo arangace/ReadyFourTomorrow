@@ -12,6 +12,7 @@ import {
 } from "./WeatherStyles";
 import { useEffect } from "react";
 import AudioButton from "../audioButton/AudioButton";
+import getContent from "../hooks/useGetContent";
 
 type WeatherCard = {
   weatherReport: WeatherForecast;
@@ -42,7 +43,10 @@ const WeatherCard = ({ weatherReport }: WeatherCard) => {
   ${`. Lastly, ${weatherReport.uv} Have a good day!`}`;
 
   const getForecast = () => {
-    dispatch(updateForecast(weatherForecast));
+    const content = getContent("#forecast-content");
+    if (content !== null) {
+      dispatch(updateForecast(content));
+    }
   };
 
   useEffect(() => {
@@ -59,10 +63,11 @@ const WeatherCard = ({ weatherReport }: WeatherCard) => {
           {weatherReport.currentConditions.conditions}
         </WeatherCondition>
       </Summary>
-      <AudioButton />
       <Forecast>
         <h2>Tomorrows Weather</h2>
-        <WeatherForecastInformation>{forecast}</WeatherForecastInformation>
+        <WeatherForecastInformation id="forecast-content">
+          {weatherForecast}
+        </WeatherForecastInformation>
       </Forecast>
     </WeatherContainer>
   );

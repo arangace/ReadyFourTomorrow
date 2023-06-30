@@ -7,9 +7,11 @@ import "@fortawesome/fontawesome-free/css/all.css";
 
 const AudioButton = () => {
   const forecast = useSelector((state: RootState) => state.forecast.value);
-
+  const meetings = useSelector((state: RootState) => state.meetings.value);
   const handleSummaryButtonClick = () => {
-    TextToSpeech(forecast);
+    const summary = `${forecast} ${meetings}`;
+    console.log(summary);
+    TextToSpeech(summary);
   };
   return (
     <SummaryButton onClick={handleSummaryButtonClick}>

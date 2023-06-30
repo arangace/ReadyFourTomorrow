@@ -6,6 +6,7 @@ import Clock from "../clock/Clock";
 import Weather from "../weather/Weather";
 import Meetings from "../meetings/Meetings";
 import { UserEvents } from "@/types/types";
+import AudioButton from "../audioButton/AudioButton";
 
 const HomePage = () => {
   const { data, status } = useSession();
@@ -67,6 +68,7 @@ const HomePage = () => {
   return (
     <MainContent>
       <Clock />
+      <AudioButton />
       <Weather />
       {loaded && <Meetings loaded={loaded} userEvents={userEvents} />}
     </MainContent>

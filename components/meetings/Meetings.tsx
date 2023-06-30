@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MeetingInformation, UserEvents } from "@/types/types";
 import {
   MeetingHeading,
@@ -7,11 +7,26 @@ import {
   MeetingTime,
   MeetingsContainer,
 } from "./MeetingsStyles";
+import { useDispatch } from "react-redux";
+import { updateMeetings } from "@/store/meetingsSlice";
+import getContent from "../hooks/useGetContent";
 
 const Meetings = ({ userEvents, loaded }: MeetingInformation) => {
+  const dispatch = useDispatch();
+
+  const getMeetings = () => {
+    const content = getContent("#meetings-content");
+    if (content !== null) {
+      dispatch(updateMeetings(content));
+    }
+  };
+  useEffect(() => {
+    getMeetings();
+  }, []);
+
   return (
-    <MeetingsContainer>
-      <MeetingHeading>Tomorrows Meetings</MeetingHeading>
+    <MeetingsContainer id="meetings-content">
+      <MeetingHeading>Tomorrows Schedule</MeetingHeading>
       {loaded &&
         (userEvents.length !== 0 ? (
           userEvents.map((event, index) => (
