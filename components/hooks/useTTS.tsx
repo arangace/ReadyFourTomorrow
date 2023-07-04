@@ -12,7 +12,7 @@ const useTextToSpeech = () => {
       speechSynthesis.speak(message);
       dispatch(setIsSpeaking(true));
 
-      message.addEventListener("end", (event) => {
+      message.addEventListener("end", () => {
         dispatch(setIsSpeaking(false));
         speechSynthesis.cancel();
       });

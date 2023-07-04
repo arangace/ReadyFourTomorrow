@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { SummaryButton } from "./AudioButtonStyles";
+import { PauseIcon, SpeakerIcon, SummaryButton } from "./AudioButtonStyles";
 import useTextToSpeech from "../hooks/useTTS";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
@@ -27,7 +27,11 @@ const AudioButton = () => {
   return (
     <SummaryButton onClick={handleSummaryButtonClick}>
       SUMMARY
-      {audioPlaying && <i className="fas fa-volume-up"></i>}
+      {audioPlaying ? (
+        <PauseIcon className="fa-solid fa-pause"></PauseIcon>
+      ) : (
+        <SpeakerIcon className="fas fa-volume-up"></SpeakerIcon>
+      )}
     </SummaryButton>
   );
 };
