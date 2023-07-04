@@ -9,15 +9,11 @@ const useTextToSpeech = () => {
     speechSynthesis.cancel();
     let message = new SpeechSynthesisUtterance(forecastToAnnounce);
     if ("speechSynthesis" in window) {
-      console.log("speaking");
       speechSynthesis.speak(message);
       dispatch(setIsSpeaking(true));
 
       message.addEventListener("end", (event) => {
-        console.log("ending speech");
-        message.removeEventListener("end", () =>
-          dispatch(setIsSpeaking(false))
-        );
+        dispatch(setIsSpeaking(false));
         speechSynthesis.cancel();
       });
     } else {

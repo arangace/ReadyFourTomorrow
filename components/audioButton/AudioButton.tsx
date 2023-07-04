@@ -12,17 +12,22 @@ const AudioButton = () => {
 
   const forecast = useSelector((state: RootState) => state.forecast.value);
   const meetings = useSelector((state: RootState) => state.meetings.value);
+  const audioPlaying = useSelector((state: RootState) => state.tts.isSpeaking);
 
   const handleSummaryButtonClick = () => {
     const summary = `${forecast} ${meetings}`;
     console.log(summary);
     speak(summary);
   };
+  useEffect(() => {
+    console.log("audio is playing..");
+    console.log(audioPlaying);
+  }, [audioPlaying]);
 
   return (
     <SummaryButton onClick={handleSummaryButtonClick}>
       SUMMARY
-      {synth.speaking && <i className="fas fa-volume-up"></i>}
+      {audioPlaying && <i className="fas fa-volume-up"></i>}
     </SummaryButton>
   );
 };
