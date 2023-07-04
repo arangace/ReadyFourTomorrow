@@ -1,21 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SummaryButton } from "./AudioButtonStyles";
-import TextToSpeech from "../hooks/useTTS";
-import { useSelector } from "react-redux";
+import useTextToSpeech from "../hooks/useTTS";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import "@fortawesome/fontawesome-free/css/all.css";
+import { setIsSpeaking } from "@/store/textToSpeechSlice";
 
 const AudioButton = () => {
+  const synth = window.speechSynthesis;
+  const { speak } = useTextToSpeech();
+
   const forecast = useSelector((state: RootState) => state.forecast.value);
   const meetings = useSelector((state: RootState) => state.meetings.value);
+
   const handleSummaryButtonClick = () => {
     const summary = `${forecast} ${meetings}`;
     console.log(summary);
-    TextToSpeech(summary);
+    speak(summary);
   };
+
   return (
     <SummaryButton onClick={handleSummaryButtonClick}>
-      SUMMARY <i className="fas fa-volume-up"></i>
+      SUMMARY
+      {synth.speaking && <i className="fas fa-volume-up"></i>}
     </SummaryButton>
   );
 };

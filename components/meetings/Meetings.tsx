@@ -32,6 +32,7 @@ const Meetings = ({ userEvents, loaded }: MeetingInformation) => {
           userEvents.map((event, index) => (
             <MeetingItem key={index}>
               <MeetingName>{event.name}</MeetingName>
+              <span>-</span>
               <MeetingTime>{event.time}</MeetingTime>
             </MeetingItem>
           ))

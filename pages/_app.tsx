@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
-import Layout from "@/components/Layouts/Layout";
+import Layout from "@/components/layouts/Layout";
 import { ReactElement, ReactNode } from "react";
 import { NextPage } from "next";
 import { Provider } from "react-redux";

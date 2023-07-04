@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import styles from "./privacyStyles.module.scss";
-import PrivacyLayout from "@/components/Layouts/PrivacyLayout";
+import PrivacyLayout from "@/components/layouts/PrivacyLayout";
 const PrivacyPolicy = () => {
   return (
     <main className={styles.privacy}>
