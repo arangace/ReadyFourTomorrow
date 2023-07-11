@@ -11,11 +11,12 @@ import { useDispatch } from "react-redux";
 import { updateMeetings } from "@/store/meetingsSlice";
 import getContent from "../hooks/useGetContent";
 
-const Meetings = ({ userEvents, loaded }: MeetingInformation) => {
+const Meetings = ({ userEvents, loaded, showMore }: MeetingInformation) => {
   const dispatch = useDispatch();
 
   const getMeetings = () => {
-    const content = getContent("#meetings-content");
+    let content = "Tomorrows Schedule. ";
+    userEvents.map((event) => (content += `${event.name} at ${event.time},`));
     if (content !== null) {
       dispatch(updateMeetings(content));
     }
@@ -25,23 +26,26 @@ const Meetings = ({ userEvents, loaded }: MeetingInformation) => {
   }, []);
 
   return (
-    <MeetingsContainer id="meetings-content">
-      <MeetingHeading>Tomorrows Schedule</MeetingHeading>
-      {loaded &&
-        (userEvents.length !== 0 ? (
-          userEvents.map((event, index) => (
-            <MeetingItem key={index}>
-              <MeetingName>{event.name}</MeetingName>
-              <span>-</span>
-              <MeetingTime>{event.time}</MeetingTime>
-            </MeetingItem>
-          ))
-        ) : (
-          <MeetingItem>
-            You have no events for tomorrow. Enjoy your day!
-          </MeetingItem>
-        ))}
-    </MeetingsContainer>
+    <>
+      {showMore && (
+        <MeetingsContainer id="meetings-content">
+          <MeetingHeading>Tomorrows Schedule</MeetingHeading>
+          {loaded &&
+            (userEvents.length !== 0 ? (
+              userEvents.map((event, index) => (
+                <MeetingItem key={index}>
+                  <MeetingName>{event.name}</MeetingName>
+                  <MeetingTime>{event.time}</MeetingTime>
+                </MeetingItem>
+              ))
+            ) : (
+              <MeetingItem>
+                You have no events for tomorrow. Enjoy your day!
+              </MeetingItem>
+            ))}
+        </MeetingsContainer>
+      )}
+    </>
   );
 };
 

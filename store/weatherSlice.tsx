@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ForecastState {
-  value: string;
+  text: string;
+  locationEnabled: boolean;
 }
 
 const initialState: ForecastState = {
-  value: "",
+  text: "",
+  locationEnabled: false,
 };
 
 const forecastSlice = createSlice({
@@ -13,11 +15,14 @@ const forecastSlice = createSlice({
   initialState,
   reducers: {
     updateForecast: (state, action: PayloadAction<string>) => {
-      state.value += action.payload;
+      state.text += action.payload;
+    },
+    updateLocation: (state, action: PayloadAction<boolean>) => {
+      state.locationEnabled = action.payload;
     },
   },
 });
 
-export const { updateForecast } = forecastSlice.actions;
+export const { updateForecast, updateLocation } = forecastSlice.actions;
 
 export default forecastSlice.reducer;

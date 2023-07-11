@@ -1,28 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { PauseIcon, SpeakerIcon, SummaryButton } from "./AudioButtonStyles";
 import useTextToSpeech from "../hooks/useTTS";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import "@fortawesome/fontawesome-free/css/all.css";
-import { setIsSpeaking } from "@/store/textToSpeechSlice";
 
 const AudioButton = () => {
-  const synth = window.speechSynthesis;
   const { speak } = useTextToSpeech();
-
-  const forecast = useSelector((state: RootState) => state.forecast.value);
+  const forecast = useSelector((state: RootState) => state.forecast.text);
   const meetings = useSelector((state: RootState) => state.meetings.value);
   const audioPlaying = useSelector((state: RootState) => state.tts.isSpeaking);
 
   const handleSummaryButtonClick = () => {
     const summary = `${forecast} ${meetings}`;
     console.log(summary);
-    speak(summary);
+    if (audioPlaying) {
+      speak(summary, true);
+    } else {
+      speak(summary, false);
+    }
   };
-  useEffect(() => {
-    console.log("audio is playing..");
-    console.log(audioPlaying);
-  }, [audioPlaying]);
 
   return (
     <SummaryButton onClick={handleSummaryButtonClick}>

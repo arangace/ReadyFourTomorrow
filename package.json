@@ -26,8 +26,8 @@
     "react-dom": "18.2.0",
     "react-redux": "^8.0.7",
     "redux": "^4.2.1",
-    "styled-components": "^5.3.10",
-    "swr": "^2.1.5",
+    "styled-components": "^5.3.11",
+    "swr": "^2.2.0",
     "typescript": "5.0.4",
     "yup": "^1.1.1"
   },

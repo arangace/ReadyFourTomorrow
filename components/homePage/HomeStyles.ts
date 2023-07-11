@@ -9,3 +9,4 @@ import {
 export const MainContent = styled(FlexColumn)`
   padding: 2.5rem;
 `;
+export const ShowMoreButton = styled(Button)``;

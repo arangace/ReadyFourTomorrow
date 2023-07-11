@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { getSession, signOut, useSession } from "next-auth/react";
-import { MainContent } from "./HomeStyles";
+import { MainContent, ShowMoreButton } from "./HomeStyles";
 import fetchData from "../hooks/useFetch";
 import Clock from "../clock/Clock";
 import Weather from "../weather/Weather";
 import Meetings from "../meetings/Meetings";
 import { UserEvents } from "@/types/types";
 import AudioButton from "../audioButton/AudioButton";
+import WeatherSummary from "../weather/WeatherSummary";
 
 const HomePage = () => {
   const { data, status } = useSession();
   const [userEvents, setUserEvents] = useState<UserEvents>([]);
   const [loaded, setloaded] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
   const handleSignOut = () => {
     console.log("signing out..");
     signOut({ callbackUrl: "/login" });
+  };
+
+  const handleMoreClick = () => {
+    setShowMore(!showMore);
   };
 
   useEffect(() => {
@@ -68,9 +74,15 @@ const HomePage = () => {
   return (
     <MainContent>
       <Clock />
+      <WeatherSummary />
       <AudioButton />
-      <Weather />
-      {loaded && <Meetings loaded={loaded} userEvents={userEvents} />}
+      <ShowMoreButton onClick={handleMoreClick}>
+        {showMore ? "Less" : "More"}
+      </ShowMoreButton>
+      <Weather showMore={showMore} />
+      {loaded && (
+        <Meetings showMore={showMore} loaded={loaded} userEvents={userEvents} />
+      )}
     </MainContent>
   );
 };
