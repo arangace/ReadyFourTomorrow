@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Summary, Temperature, WeatherCondition } from "./WeatherStyles";
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
 import { UserActionPrompt } from "@/styles/HomeStyles";
 
 const WeatherSummary = () => {
-  const conditions = localStorage.getItem("conditions");
-  const temp = localStorage.getItem("temp");
+  let conditions = localStorage.getItem("conditions");
+  let temp = localStorage.getItem("temp");
+
+  const updateWeather = () => {
+    conditions = localStorage.getItem("conditions");
+    temp = localStorage.getItem("temp");
+  };
+
   const locationEnabled = useSelector(
     (state: RootState) => state.forecast.locationEnabled
   );
+  useEffect(() => {
+    updateWeather();
+  }, [locationEnabled]);
 
   return locationEnabled ? (
     <Summary>
