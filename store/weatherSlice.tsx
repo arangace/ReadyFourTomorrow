@@ -15,7 +15,7 @@ const forecastSlice = createSlice({
   initialState,
   reducers: {
     updateForecast: (state, action: PayloadAction<string>) => {
-      state.text += action.payload;
+      state.text = action.payload;
     },
     updateLocation: (state, action: PayloadAction<boolean>) => {
       state.locationEnabled = action.payload;

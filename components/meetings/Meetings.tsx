@@ -9,7 +9,6 @@ import {
 } from "./MeetingsStyles";
 import { useDispatch } from "react-redux";
 import { updateMeetings } from "@/store/meetingsSlice";
-import getContent from "../hooks/useGetContent";
 
 const Meetings = ({ userEvents, loaded, showMore }: MeetingInformation) => {
   const dispatch = useDispatch();
