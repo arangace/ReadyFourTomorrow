@@ -16,6 +16,8 @@ const Meetings = ({ userEvents, loaded, showMore }: MeetingInformation) => {
   const getMeetings = () => {
     let content = "Tomorrows Schedule. ";
     userEvents.map((event) => (content += `${event.name} at ${event.time},`));
+    console.log(userEvents);
+    console.log(content);
     if (content !== null) {
       dispatch(updateMeetings(content));
     }

@@ -1,13 +1,6 @@
-import styled from "styled-components";
-import {
-  Container,
-  MainHeader,
-  Wrapper,
-  LoginButton,
-} from "../../styles/LoginStyles";
-import LoginForm from "@/components/loginform/LoginForm";
-import { signIn } from "next-auth/react";
+import { Container, MainHeader, Wrapper } from "../../styles/LoginStyles";
 import Head from "next/head";
+import LoginOptions from "@/components/login/LoginOptions";
 
 type LoginPageInformation = { loginButtonHandler: () => void };
 
@@ -21,9 +14,7 @@ const LoginPage = ({ loginButtonHandler }: LoginPageInformation) => {
         <Wrapper>
           <MainHeader>Login</MainHeader>
           {/* <LoginForm loginButtonHandler={loginButtonHandler}></LoginForm> */}
-          <LoginButton onClick={() => signIn("google", { callbackUrl: "/" })}>
-            Sign in with Google
-          </LoginButton>
+          <LoginOptions />
         </Wrapper>
       </Container>
     </>

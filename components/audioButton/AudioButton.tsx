@@ -3,7 +3,6 @@ import { PauseIcon, SpeakerIcon, SummaryButton } from "./AudioButtonStyles";
 import useTextToSpeech from "../hooks/useTTS";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import "@fortawesome/fontawesome-free/css/all.css";
 
 const AudioButton = () => {
   const { speak } = useTextToSpeech();

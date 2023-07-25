@@ -6,6 +6,8 @@ import { ReactElement, ReactNode } from "react";
 import { NextPage } from "next";
 import { Provider } from "react-redux";
 import store from "@/store/store";
+import "@fortawesome/fontawesome-free/css/all.css";
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };

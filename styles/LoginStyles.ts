@@ -14,7 +14,3 @@ export const Wrapper = styled(FlexColumn)`
   margin: 2.5rem;
   justify-content: space-around;
 `;
-export const LoginButton = styled(Button)`
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-`;
