@@ -1,16 +1,20 @@
 import React from "react";
-import { NavContainer } from "./NavbarStyles";
+import { NavContainer, User } from "./NavbarStyles";
 import { signOut, useSession } from "next-auth/react";
 import { SignOutButton } from "./NavbarStyles";
 const Navbar = () => {
-  const { data, status } = useSession();
-
+  const { data: session, status } = useSession();
+  console.log(session);
+  console.log(session?.user?.name);
   return (
     <NavContainer>
       {status === "authenticated" && (
-        <SignOutButton onClick={() => signOut({ callbackUrl: "/home" })}>
-          Sign out
-        </SignOutButton>
+        <>
+          <User></User>
+          <SignOutButton onClick={() => signOut({ callbackUrl: "/home" })}>
+            Sign out
+          </SignOutButton>
+        </>
       )}
     </NavContainer>
   );

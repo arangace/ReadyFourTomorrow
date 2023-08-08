@@ -25,6 +25,8 @@ const HomePage = () => {
   };
 
   useEffect(() => {
+    console.log(data?.user?.name);
+    console.log("done");
     const getCalendarData = async () => {
       const calendarEvents = await fetchData();
       console.log(calendarEvents);

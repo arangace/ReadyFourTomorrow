@@ -14,7 +14,6 @@ import { useSession } from "next-auth/react";
 const Home = () => {
   const router = useRouter();
   const { data, status } = useSession();
-
   return (
     <Container>
       <Header>Welcome to Ready Four Tomorrow</Header>
