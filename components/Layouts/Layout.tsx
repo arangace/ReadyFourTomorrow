@@ -11,7 +11,7 @@ export default function Layout({ children }: Layout) {
         <title>Ready Four Tomorrow</title>
       </Head>
       <NavBar />
-      <main>{children}</main>
+      {children}
       <FooterComponent />
     </>
   );

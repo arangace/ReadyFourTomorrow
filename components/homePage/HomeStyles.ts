@@ -6,8 +6,11 @@ import {
   ButtonInverted,
 } from "@/styles/shared/globalStyles";
 
-export const MainContent = styled(FlexColumn)`
-  padding: 2.5rem;
+export const MainContent = styled.main`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 `;
 export const ShowMoreButton = styled(Button)`
   margin-bottom: 2rem;

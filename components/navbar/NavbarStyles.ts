@@ -2,12 +2,10 @@ import { ButtonInverted } from "@/styles/shared/globalStyles";
 import styled from "styled-components";
 
 export const NavContainer = styled.nav`
-  height: 5rem;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  justify-content: space-between;
+  width: 100%;
 `;
 export const SignOutButton = styled(ButtonInverted)`
   color: var(--primary-colour);
@@ -15,4 +13,4 @@ export const SignOutButton = styled(ButtonInverted)`
   border-radius: 0.5rem;
   font-size: 1.5rem;
 `;
-export const User = styled.div``;
+export const User = styled.h2``;

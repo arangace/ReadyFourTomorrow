@@ -5,6 +5,8 @@ export const Footer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-self: flex-end;
+  margin-top: auto;
 `;
 export const FooterContainer = styled.ul`
   list-style: none;

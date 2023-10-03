@@ -6,6 +6,11 @@ export const LoginButton = styled(Button)`
   border-radius: 0.5rem;
   display: flex;
   gap: 0.5rem;
+  &:hover {
+    i {
+      color: var(--primary-color);
+    }
+  }
 `;
 export const Icon = styled.i`
   color: white;
