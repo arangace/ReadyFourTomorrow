@@ -10,10 +10,8 @@ import WeatherSummary from "../weather/WeatherSummary";
 import getData from "../hooks/useGetData";
 
 type Response = {
-  response: {
-    userEvents: Array<string>;
-    loaded: boolean;
-  };
+  userEvents: UserEvents;
+  loaded: boolean;
 };
 
 const HomePage = () => {
@@ -26,13 +24,11 @@ const HomePage = () => {
     setShowMore(!showMore);
   };
   const fetchData = async () => {
-    const response = (await getData()) as any;
+    const response = (await getData()) as Response;
     setUserEvents(response.userEvents);
     setloaded(response.loaded);
   };
   useEffect(() => {
-    console.log(data?.user?.name);
-    console.log("done");
     fetchData();
   }, []);
 
