@@ -11,6 +11,7 @@ export const LoginButton = styled(Button)`
   padding: 0.5rem;
   border-radius: 0.5rem;
   display: flex;
+  justify-content: flex-start;
   gap: 0.5rem;
   &:hover {
     i {
