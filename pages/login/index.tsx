@@ -11,11 +11,9 @@ const LoginPage = ({ loginButtonHandler }: LoginPageInformation) => {
         <title>Ready Four Tomorrow | Login</title>
       </Head>
       <Container>
-        <Wrapper>
-          <MainHeader>Login</MainHeader>
-          {/* <LoginForm loginButtonHandler={loginButtonHandler}></LoginForm> */}
-          <LoginOptions />
-        </Wrapper>
+        <MainHeader>Login</MainHeader>
+        {/* <LoginForm loginButtonHandler={loginButtonHandler}></LoginForm> */}
+        <LoginOptions />
       </Container>
     </>
   );
