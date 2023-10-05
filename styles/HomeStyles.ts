@@ -10,13 +10,16 @@ export const SignOutButton = styled(ButtonInverted)`
   font-size: 1.5rem;
 `;
 
-export const Container = styled(FlexColumn)`
-  align-items: baseline;
-  margin-left: 5rem;
-  margin-right: 5rem;
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: auto;
+  grid-rows: auto;
+  justify-items: flex-start;
+  align-items: center;
 `;
 export const Header = styled.h1`
   margin-bottom: 0;
+  grid-row: 1;
 `;
 export const SecondaryHeader = styled.h2`
   margin-top: 0;
@@ -24,6 +27,7 @@ export const SecondaryHeader = styled.h2`
   font-weight: normal;
   filter: brightness(0.85);
   font-style: italic;
+  grid-row: 2;
 `;
 
 export const LoginPromptButton = styled.button`
@@ -38,15 +42,24 @@ export const LoginPromptButton = styled.button`
   font-size: 1.75rem;
   padding: 1rem 1.5rem;
   background-color: #30bfbf;
+  grid-row: 4;
+
   &:hover {
     color: #30bfbf;
     background-color: white;
     border: 2px solid #30bfbf;
   }
 `;
-export const Description = styled.section``;
+export const Description = styled.section`
+  grid-row: 3;
+`;
 export const UserActionPrompt = styled.p`
   text-align: inherit;
   font-size: 2rem;
   font-weight: bold;
+`;
+export const DashboardButton = styled(ButtonInverted)`
+  margin-top: 1rem;
+  display: flex;
+  grid-row: 4;
 `;

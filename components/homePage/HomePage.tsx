@@ -77,7 +77,7 @@ const HomePage = () => {
     <MainContent>
       <Clock />
       <WeatherSummary />
-      <ShowMoreButton onClick={handleMoreClick}>
+      <ShowMoreButton type="button" onClick={handleMoreClick}>
         {showMore ? "Less" : "More"}
       </ShowMoreButton>
       <Weather showMore={showMore} />

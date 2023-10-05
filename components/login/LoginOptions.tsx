@@ -5,11 +5,15 @@ import { signIn } from "next-auth/react";
 const LoginOptions = () => {
   return (
     <Container>
-      <LoginButton onClick={() => signIn("google", { callbackUrl: "/" })}>
+      <LoginButton
+        type="button"
+        onClick={() => signIn("google", { callbackUrl: "/" })}
+      >
         <Icon className="fa-brands fa-google"></Icon>
         Sign in
       </LoginButton>
       <LoginButton
+        type="button"
         onClick={() =>
           signIn("google", { callbackUrl: "/" }, { prompt: "login" })
         }

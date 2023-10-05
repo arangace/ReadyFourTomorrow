@@ -21,7 +21,7 @@ const AudioButton = () => {
   };
 
   return (
-    <SummaryButton onClick={handleSummaryButtonClick}>
+    <SummaryButton type="button" onClick={handleSummaryButtonClick}>
       SUMMARY
       {audioPlaying ? (
         <PauseIcon className="fa-solid fa-pause"></PauseIcon>

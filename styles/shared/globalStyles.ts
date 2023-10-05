@@ -45,7 +45,6 @@ export const Button = styled.button`
   }
 `;
 export const ButtonInverted = styled.button`
-  border: initial;
   background-color: white;
   padding: initial;
   margin: initial;
@@ -54,6 +53,7 @@ export const ButtonInverted = styled.button`
   padding: 0.5rem 1rem 0.5rem 1rem;
   color: var(--primary-colour);
   border: 2px solid white;
+  border-radius: 2.5rem;
   &:hover {
     color: var(--text-colour);
     background-color: var(--primary-colour);

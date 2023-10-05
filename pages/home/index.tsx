@@ -1,7 +1,7 @@
-import { Button } from "@/styles/shared/globalStyles";
 import React from "react";
 import {
   Container,
+  DashboardButton,
   Description,
   Header,
   LoginPromptButton,
@@ -21,18 +21,27 @@ const Home = () => {
         Getting you ready for tomorrow all in one place
       </SecondaryHeader>
       <Description>
-        A simple application which provides a summary of your day ahead at the
-        click of a button. Making sure you&apos;re prepared for the day ahead!
-        Click the &quot;SUMMARY&quot; button for a spoken summary of your day
-        {status === "unauthenticated" && (
+        <span>
+          A simple application which provides a summary of your day ahead at the
+          click of a button. Making sure you&apos;re prepared for the day ahead!
+          Click the &quot;SUMMARY&quot; button for a spoken summary of your day
+        </span>
+        {status === "unauthenticated" ? (
           <>
             <UserActionPrompt>
               User is not logged in, to get started click
             </UserActionPrompt>
-            <LoginPromptButton onClick={() => router.push("/login")}>
+            <LoginPromptButton
+              type="button"
+              onClick={() => router.push("/login")}
+            >
               Login
             </LoginPromptButton>
           </>
+        ) : (
+          <DashboardButton onClick={() => router.push("/")} type="button">
+            Go to your dashboard
+          </DashboardButton>
         )}
       </Description>
     </Container>

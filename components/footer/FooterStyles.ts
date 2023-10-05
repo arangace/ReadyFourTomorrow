@@ -16,7 +16,7 @@ export const FooterContainer = styled.ul`
   padding: 0;
   gap: 2.5rem;
 `;
-export const FooterItem = styled.li`
+export const FooterListItem = styled.li`
   &:hover,
   &:focus-visible {
     text-decoration: underline;

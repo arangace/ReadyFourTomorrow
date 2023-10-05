@@ -13,4 +13,3 @@ export const SignOutButton = styled(ButtonInverted)`
   border-radius: 0.5rem;
   font-size: 1.5rem;
 `;
-export const User = styled.h2``;

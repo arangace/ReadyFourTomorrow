@@ -1,7 +1,8 @@
 import React from "react";
-import { NavContainer, User } from "./NavbarStyles";
+import { NavContainer } from "./NavbarStyles";
 import { signOut, useSession } from "next-auth/react";
 import { SignOutButton } from "./NavbarStyles";
+import User from "../User/User";
 const Navbar = () => {
   const { data: session, status } = useSession();
   console.log(session);
@@ -10,8 +11,11 @@ const Navbar = () => {
     <NavContainer>
       {status === "authenticated" && (
         <>
-          {session && <User>{session?.user?.name}</User>}
-          <SignOutButton onClick={() => signOut({ callbackUrl: "/home" })}>
+          {session.user && <User user={session.user} />}
+          <SignOutButton
+            type="button"
+            onClick={() => signOut({ callbackUrl: "/home" })}
+          >
             Sign out
           </SignOutButton>
         </>
