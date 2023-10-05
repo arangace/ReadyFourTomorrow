@@ -57,6 +57,16 @@ h4,
 p {
   text-align: center;
 }
+@media only screen and (max-width: 414px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  span {
+    text-align: center;
+  }
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -2,15 +2,11 @@ import styled from "styled-components";
 import { Button } from "@/styles/shared/globalStyles";
 
 export const SummaryButton = styled(Button)`
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  align-items: center;
-  margin-bottom: 2.5rem;
-  font-size: 3rem;
-  padding: 2.5rem 3rem;
   background-color: #ffb202;
   border-color: white;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  gap: 0.5rem;
   &:hover {
     color: #ffb202;
     background-color: white;

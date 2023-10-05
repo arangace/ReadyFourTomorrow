@@ -1,4 +1,4 @@
-import { Container, MainHeader, Wrapper } from "../../styles/LoginStyles";
+import { Container, MainHeader } from "../../styles/LoginStyles";
 import Head from "next/head";
 import LoginOptions from "@/components/login/LoginOptions";
 

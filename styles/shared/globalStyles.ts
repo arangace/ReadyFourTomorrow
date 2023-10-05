@@ -24,7 +24,9 @@ export const UserActionPrompt = styled.h2`
 `;
 
 export const Button = styled.button`
-  border: initial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--primary-colour);
   color: var(--text-colour);
   border: 2px solid var(--primary-colour);
