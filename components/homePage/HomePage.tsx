@@ -77,7 +77,7 @@ const HomePage = () => {
     <MainContent>
       <Clock />
       <WeatherSummary />
-      <AudioButton />
+      {loaded && <AudioButton />}
       <ShowMoreButton type="button" onClick={handleMoreClick}>
         {showMore ? "Less" : "More"}
       </ShowMoreButton>
