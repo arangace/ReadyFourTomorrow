@@ -35,10 +35,12 @@ export type WeatherForecast = {
   windy: string;
   uv: string;
 };
-export type UserEvents = {
+export type SingleUserEvent = {
   name: string;
   time: string;
-}[];
+};
+export type UserEvents = SingleUserEvent[];
+
 export type Token = {
   token: { accessToken: string; id: string };
   account: { access_token: string };

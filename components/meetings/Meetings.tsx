@@ -23,6 +23,7 @@ const Meetings = ({ userEvents, loaded, showMore }: MeetingInformation) => {
     }
   };
   useEffect(() => {
+    console.log("MEETINGS", userEvents);
     getMeetings();
   }, []);
 
