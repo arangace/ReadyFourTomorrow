@@ -16,8 +16,7 @@ export default function Index() {
   const loginHandler = () => {
     setIsLoggedIn(!isLoggedIn);
   };
-  const { data, status } = useSession();
-  console.log(status);
+  const { status } = useSession();
   if (status === "unauthenticated") {
     signOut({ callbackUrl: "/home" });
   }

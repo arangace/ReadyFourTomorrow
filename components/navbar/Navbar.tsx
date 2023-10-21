@@ -5,8 +5,6 @@ import { SignOutButton } from "./NavbarStyles";
 import User from "../User/User";
 const Navbar = () => {
   const { data: session, status } = useSession();
-  console.log(session);
-  console.log(session?.user?.name);
   return (
     <NavContainer>
       {status === "authenticated" && (
