@@ -15,7 +15,6 @@ type Response = {
 };
 
 const HomePage = () => {
-  const { data, status } = useSession();
   const [userEvents, setUserEvents] = useState<UserEvents>([]);
   const [loaded, setloaded] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -25,8 +24,10 @@ const HomePage = () => {
   };
   const fetchData = async () => {
     const response = (await getData()) as Response;
-    setUserEvents(response.userEvents);
-    setloaded(response.loaded);
+    if (response) {
+      setUserEvents(response.userEvents);
+      setloaded(response.loaded);
+    }
   };
   useEffect(() => {
     fetchData();

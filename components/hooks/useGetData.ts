@@ -4,17 +4,15 @@ import fetchData from "./fetch";
 
 const getData = async () => {
   const calendarEvents = await fetchData();
-
   let loaded = false;
   let userEvents: Array<SingleUserEvent> = [];
+
   if (calendarEvents) {
     if (calendarEvents.error) {
       console.log("User not authenticated");
       signOut({ callbackUrl: "/login" });
-      return;
     } else if (calendarEvents.items.length === 0) {
       loaded = true;
-      return;
     } else {
       calendarEvents.items.map((event) => {
         if (event.status !== "cancelled") {
@@ -46,12 +44,13 @@ const getData = async () => {
         }
       });
     }
+  } else {
+    signOut({ callbackUrl: "/login" });
+    return null;
   }
-
-  const data = {
+  return {
     userEvents: userEvents,
     loaded: loaded,
   };
-  return data;
 };
 export default getData;

@@ -22,9 +22,12 @@ const fetchData = async () => {
         },
       }
     );
-
-    const fetchedData = await response.json();
-    return fetchedData as CalendarItem;
+    if (response.status === 200) {
+      const fetchedData = await response.json();
+      return fetchedData as CalendarItem;
+    } else {
+      throw new Error();
+    }
   }
 };
 export default fetchData;
