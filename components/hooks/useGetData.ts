@@ -10,6 +10,7 @@ const getData = async () => {
   if (calendarEvents) {
     if (calendarEvents.error) {
       console.log("User not authenticated");
+
       signOut({ callbackUrl: "/login" });
     } else if (calendarEvents.items.length === 0) {
       loaded = true;
