@@ -1,4 +1,4 @@
-import { getSession } from "next-auth/react";
+import { getSession, signOut } from "next-auth/react";
 import getTime from "./useGetTime";
 import { Session } from "next-auth";
 import { CalendarItem } from "@/types/types";
@@ -21,17 +21,16 @@ const getCalendar = async (session: UserSession) => {
   );
 
   if (response.status === 200) {
-    return response;
+    return response.json();
   } else {
-    throw new Error();
+    signOut({ callbackUrl: "/home" });
   }
 };
 
 const fetchData = async () => {
   const session = (await getSession()) as UserSession;
   if (session) {
-    const response = await getCalendar(session);
-    const fetchedData = await response.json();
+    const fetchedData = await getCalendar(session);
 
     return fetchedData as CalendarItem;
   }
