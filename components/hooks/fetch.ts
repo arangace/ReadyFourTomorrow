@@ -7,33 +7,27 @@ interface UserSession extends Session {
   accessToken: string;
 }
 
-const getCalendar = async (session: UserSession) => {
-  const accessToken = session.accessToken;
-  const timePeriod = getTime();
-
-  const response = await fetch(
-    `https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${timePeriod.startTime}&timeMax=${timePeriod.endTime}`,
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
-  );
-
-  if (response.status === 200) {
-    return response;
-  } else {
-    throw new Error();
-  }
-};
-
 const fetchData = async () => {
+  console.log("fetching..");
   const session = (await getSession()) as UserSession;
   if (session) {
-    const response = await getCalendar(session);
-    const fetchedData = await response.json();
-
-    return fetchedData as CalendarItem;
+    console.log("session valid");
+    const accessToken = session.accessToken;
+    const timePeriod = getTime();
+    const response = await fetch(
+      `https://www.googleapis.com/calendar/v3/calendars/primary/events?timeMin=${timePeriod.startTime}&timeMax=${timePeriod.endTime}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    if (response.status === 200) {
+      const fetchedData = await response.json();
+      return fetchedData as CalendarItem;
+    } else {
+      throw new Error();
+    }
   }
 };
 export default fetchData;

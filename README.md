@@ -8,4 +8,3 @@ TODO:
 - Clean up useEffects into hooks
 - Refine user journey
 - Only render "show" button when fetch response has finished
-- re-enable PWA
