@@ -1,6 +1,6 @@
 import { SingleUserEvent } from "@/types/types";
 import { signOut } from "next-auth/react";
-import fetchData from "./fetch";
+import fetchData from "../services/fetch";
 
 const getData = async () => {
   const calendarEvents = await fetchData();

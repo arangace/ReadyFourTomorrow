@@ -19,6 +19,10 @@ export type CalendarItem = {
   updated?: string;
   error?: object;
 };
+export type Location = {
+  lat: number;
+  long: number;
+};
 export type WeatherForecast = {
   currentConditions: {
     conditions: string;
