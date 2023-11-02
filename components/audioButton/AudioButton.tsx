@@ -9,9 +9,9 @@ const AudioButton = () => {
   const forecast = useSelector((state: RootState) => state.forecast.text);
   const meetings = useSelector((state: RootState) => state.meetings.value);
   const audioPlaying = useSelector((state: RootState) => state.tts.isSpeaking);
+  const summary = `${forecast} ${meetings}`;
 
   const handleSummaryButtonClick = () => {
-    const summary = `${forecast} ${meetings}`;
     console.log(summary);
     if (audioPlaying) {
       speak(summary, true);
@@ -20,7 +20,7 @@ const AudioButton = () => {
     }
   };
 
-  return (
+  return forecast !== "" && meetings !== "" ? (
     <SummaryButton type="button" onClick={handleSummaryButtonClick}>
       SUMMARY
       {audioPlaying ? (
@@ -29,7 +29,7 @@ const AudioButton = () => {
         <SpeakerIcon className="fas fa-volume-up"></SpeakerIcon>
       )}
     </SummaryButton>
-  );
+  ) : null;
 };
 
 export default AudioButton;

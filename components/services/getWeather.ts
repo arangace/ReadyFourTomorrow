@@ -10,28 +10,29 @@ const getWeather = async (location: Location) => {
       body: JSON.stringify({
         lat: location.lat,
         long: location.long,
-        days: 2,
+        days: 1,
       }),
     });
-    const weatherData = await response.json();
+    const weatherResponseData = await response.json();
     if (response.status === 400) {
       return;
     } else {
-      if (weatherData) {
+      if (weatherResponseData) {
+        const currentWeatherData = weatherResponseData.current;
+        const tomorrowsForecastData = weatherResponseData.forecast;
         //Using the weather data, get today and tomorrows weather information. Then construct an appropriate phrase from
         //the weather data and append it to an object with the text.
-        const tomorrowsWeather = weatherData[1].day;
-        const tomorrowsWeatherList = weatherData[1].hour;
+        const tomorrowsWeather = tomorrowsForecastData[0].day;
+        const tomorrowsWeatherList = tomorrowsForecastData[0].hour;
         const avgWeather = tomorrowsWeather.condition.text;
 
-        const todaysWeather = weatherData[0].day;
-        const todaysWeatherForecast = todaysWeather.condition.text;
+        const todaysWeatherForecast = currentWeatherData.condition.text;
+        const todaysTemperature = currentWeatherData.temp_c;
 
         const morningWeather = tomorrowsWeatherList[8].condition.text;
         const eveningWeather = tomorrowsWeatherList[17].condition.text;
 
         const temperature = tomorrowsWeather.avgtemp_c;
-        const todaysTemperature = todaysWeather.avgtemp_c;
 
         //Constructs the new string with what the numerical value of the weather condition is i.e. rain 100% to "It will rain"
         let rainChance = "";
@@ -61,13 +62,14 @@ const getWeather = async (location: Location) => {
 
         let uvConcern = "";
         if (tomorrowsWeather.uv <= 5) {
-          uvConcern = "It is recommended to put on sunscreen.";
+          uvConcern = "We recommended you to put on sunscreen.";
         } else if (tomorrowsWeather.uv <= 7) {
-          uvConcern = "It is highly recommended to put on sunscreen.";
+          uvConcern = "We highly recommended you to put on sunscreen.";
         } else if (tomorrowsWeather.uv <= 10) {
-          uvConcern = "It is very highly recommended to put on sunscreen.";
+          uvConcern = "We highly recommended you to put on sunscreen.";
         } else if (tomorrowsWeather.uv > 10) {
-          uvConcern = "It is extremely highly recommended to put on sunscreen.";
+          uvConcern =
+            "We extremely highly recommended you to put on sunscreen.";
         }
 
         const weather = {
@@ -86,7 +88,7 @@ const getWeather = async (location: Location) => {
           windy: isWindy,
           uv: uvConcern,
         };
-
+        // save the weather information into local storage
         localStorage.setItem(
           "conditions",
           weather.currentConditions.conditions

@@ -1,14 +1,12 @@
 import { WeatherForecast } from "@/types/types";
-import { useSelector, useDispatch } from "react-redux";
-import { updateForecast } from "../../store/weatherSlice";
+import useWeatherForecast from "../hooks/useWeatherForecast";
 import {
   Forecast,
-  Summary,
   WeatherContainer,
-  Temperature,
-  WeatherCondition,
   WeatherForecastInformation,
 } from "./WeatherStyles";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 type WeatherCard = {
   weatherReport: WeatherForecast;
@@ -16,40 +14,21 @@ type WeatherCard = {
 };
 
 const WeatherCard = ({ weatherReport, showMore }: WeatherCard) => {
-  const dispatch = useDispatch();
+  useWeatherForecast(weatherReport);
+  const forecast = useSelector((state: RootState) => state.forecast.text);
 
-  const weatherForecast = `Here's tomorrows weather forecast. ${
-    weatherReport.weather.averageCondition
-  }.
-  ${weatherReport.snowChance !== "none" ? weatherReport.snowChance : ""}
-  With an average day temperature of ${weatherReport.temp} °C
-  . ${weatherReport.weather.morningConditions} in the morning,
-   and ${weatherReport.weather.eveningConditions} in the evening.
-  ${
-    weatherReport.weather.morningConditions.includes("rain") ||
-    weatherReport.weather.eveningConditions.includes("rain")
-      ? "It is recommended to bring an umbrella"
-      : ""
-  }
-  ${
-    weatherReport.windy === "It will be windy."
-      ? `${weatherReport.windy.slice(0, -1)}, so do take extra care`
-      : ""
-  }
-  ${`Lastly, ${weatherReport.uv} Have a good day!`}`;
-  dispatch(updateForecast(weatherForecast));
-  return (
+  return showMore ? (
     <WeatherContainer>
-      {showMore && (
+      {forecast && (
         <Forecast>
           <h2>Tomorrows Weather</h2>
           <WeatherForecastInformation id="forecast-content">
-            {weatherForecast}
+            {forecast}
           </WeatherForecastInformation>
         </Forecast>
       )}
     </WeatherContainer>
-  );
+  ) : null;
 };
 
 export default WeatherCard;

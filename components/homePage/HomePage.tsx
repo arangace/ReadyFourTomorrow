@@ -7,7 +7,7 @@ import Meetings from "../meetings/Meetings";
 import { UserEvents } from "@/types/types";
 import AudioButton from "../audioButton/AudioButton";
 import WeatherSummary from "../weather/WeatherSummary";
-import getData from "../hooks/useGetData";
+import getData from "../services/getData";
 
 type Response = {
   userEvents: UserEvents;

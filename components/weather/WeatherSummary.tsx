@@ -8,18 +8,9 @@ const WeatherSummary = () => {
   let conditions = localStorage.getItem("conditions");
   let temp = localStorage.getItem("temp");
 
-  const updateWeather = () => {
-    conditions = localStorage.getItem("conditions");
-    temp = localStorage.getItem("temp");
-  };
-
   const locationEnabled = useSelector(
     (state: RootState) => state.forecast.locationEnabled
   );
-  useEffect(() => {
-    updateWeather();
-  }, [locationEnabled]);
-
   return locationEnabled ? (
     <Summary>
       <Temperature>

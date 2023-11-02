@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { MeetingInformation, UserEvents } from "@/types/types";
+import { MeetingInformation } from "@/types/types";
 import {
   MeetingHeading,
   MeetingItem,
@@ -13,18 +13,15 @@ import { updateMeetings } from "@/store/meetingsSlice";
 const Meetings = ({ userEvents, loaded, showMore }: MeetingInformation) => {
   const dispatch = useDispatch();
 
-  const getMeetings = () => {
+  const meetingsConstructor = () => {
     let content = "Tomorrows Schedule. ";
     userEvents.map((event) => (content += `${event.name} at ${event.time},`));
-    console.log(userEvents);
-    console.log(content);
     if (content !== null) {
       dispatch(updateMeetings(content));
     }
   };
   useEffect(() => {
-    console.log("MEETINGS", userEvents);
-    getMeetings();
+    meetingsConstructor();
   }, []);
 
   return (

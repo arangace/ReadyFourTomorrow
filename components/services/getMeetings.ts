@@ -1,5 +1,5 @@
 import { getSession, signOut } from "next-auth/react";
-import getTime from "../hooks/useGetTime";
+import getTime from "./getTime";
 import { Session } from "next-auth";
 import { CalendarItem } from "@/types/types";
 
