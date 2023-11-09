@@ -20,7 +20,7 @@ const AudioButton = () => {
 
   return forecast !== "" && meetings !== "" ? (
     <SummaryButton type="button" onClick={handleSummaryButtonClick}>
-      SUMMARY
+      <span>SUMMARY</span>
       {isSpeaking ? (
         <PauseIcon className="fa-solid fa-pause"></PauseIcon>
       ) : (

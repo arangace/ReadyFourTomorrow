@@ -4,8 +4,6 @@ R4T is a PWA built to give users a summary of their schedule for tomorrow. So us
 
 TODO:
 
-- refactor button code
-- Clean up useEffects into hooks
+- order events in chronological order
 - Refine user journey
-- Only render "show" button when fetch response has finished
 - re-enable PWA
