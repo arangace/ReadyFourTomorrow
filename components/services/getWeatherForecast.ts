@@ -1,10 +1,6 @@
-import { useDispatch } from "react-redux";
-import { updateForecast } from "../../store/weatherSlice";
 import { WeatherForecast } from "@/types/types";
 
-const useWeatherForecast = (weatherReport: WeatherForecast) => {
-  const dispatch = useDispatch();
-
+const getWeatherForecast = (weatherReport: WeatherForecast) => {
   const weatherForecast = `Here's tomorrows weather forecast. ${
     weatherReport.weather.averageCondition
   }.
@@ -24,6 +20,6 @@ const useWeatherForecast = (weatherReport: WeatherForecast) => {
       : ""
   }
   ${`Lastly, ${weatherReport.uv} Have a good day!`}`;
-  dispatch(updateForecast(weatherForecast));
+  return weatherForecast;
 };
-export default useWeatherForecast;
+export default getWeatherForecast;

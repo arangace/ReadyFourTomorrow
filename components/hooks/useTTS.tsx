@@ -1,8 +1,7 @@
-import { setIsSpeaking } from "@/store/textToSpeechSlice";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 const useTextToSpeech = () => {
-  const dispatch = useDispatch();
+  const [isSpeaking, setisSpeaking] = useState(false);
 
   const speak = (forecastToAnnounce: string, stop: boolean) => {
     speechSynthesis.cancel();
@@ -10,22 +9,22 @@ const useTextToSpeech = () => {
     if ("speechSynthesis" in window) {
       if (stop) {
         speechSynthesis.cancel();
-        dispatch(setIsSpeaking(false));
+        setisSpeaking(false);
         return;
       } else {
         speechSynthesis.speak(message);
-        dispatch(setIsSpeaking(true));
+        setisSpeaking(true);
       }
 
       message.addEventListener("end", () => {
-        dispatch(setIsSpeaking(false));
+        setisSpeaking(false);
         speechSynthesis.cancel();
       });
     } else {
       throw new Error("Cannot use text to speech");
     }
   };
-  return { speak };
+  return { isSpeaking, speak };
 };
 
 export default useTextToSpeech;

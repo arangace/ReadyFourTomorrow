@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { MainContent, ShowMoreButton } from "./HomeStyles";
 import Clock from "../clock/Clock";

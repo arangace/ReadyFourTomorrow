@@ -5,15 +5,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
 const AudioButton = () => {
-  const { speak } = useTextToSpeech();
+  const { isSpeaking, speak } = useTextToSpeech();
   const forecast = useSelector((state: RootState) => state.forecast.text);
   const meetings = useSelector((state: RootState) => state.meetings.value);
-  const audioPlaying = useSelector((state: RootState) => state.tts.isSpeaking);
   const summary = `${forecast} ${meetings}`;
 
   const handleSummaryButtonClick = () => {
-    console.log(summary);
-    if (audioPlaying) {
+    if (isSpeaking) {
       speak(summary, true);
     } else {
       speak(summary, false);
@@ -23,7 +21,7 @@ const AudioButton = () => {
   return forecast !== "" && meetings !== "" ? (
     <SummaryButton type="button" onClick={handleSummaryButtonClick}>
       SUMMARY
-      {audioPlaying ? (
+      {isSpeaking ? (
         <PauseIcon className="fa-solid fa-pause"></PauseIcon>
       ) : (
         <SpeakerIcon className="fas fa-volume-up"></SpeakerIcon>
