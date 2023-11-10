@@ -10,12 +10,12 @@ export const MeetingHeading = styled.h2`
   text-align: center;
 `;
 export const MeetingItem = styled(Card)`
-  padding: 1rem;
   display: flex;
   font-size: 2rem;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2.5rem;
+  text-align: center;
 `;
 export const MeetingName = styled.span`
   padding-right: 1rem;

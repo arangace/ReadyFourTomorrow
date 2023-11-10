@@ -61,9 +61,19 @@ export const ButtonInverted = styled.button`
     background-color: var(--primary-colour);
   }
 `;
+export const ActionButton = styled(Button)`
+  font-size: 2.5rem;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+`;
 export const Card = styled.section`
   color: black;
   background-color: white;
   padding: 2.5rem;
   border-radius: 1rem;
+  @media (max-width: 414px) {
+    margin: 1rem 2rem;
+    padding: 1rem;
+  }
 `;

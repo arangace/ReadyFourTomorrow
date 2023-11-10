@@ -4,6 +4,7 @@ import {
   Button,
   Flex,
   ButtonInverted,
+  ActionButton,
 } from "@/styles/shared/globalStyles";
 
 export const MainContent = styled.main`
@@ -12,6 +13,4 @@ export const MainContent = styled.main`
   align-items: center;
   flex-direction: column;
 `;
-export const ShowMoreButton = styled(Button)`
-  margin-bottom: 2rem;
-`;
+export const ShowMoreButton = styled(ActionButton)``;

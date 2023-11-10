@@ -22,6 +22,7 @@ const HomePage = () => {
   const handleMoreClick = () => {
     setShowMore(!showMore);
   };
+
   const fetchData = async () => {
     const response = (await getData()) as Response;
     if (response) {
@@ -29,6 +30,7 @@ const HomePage = () => {
       setloaded(response.loaded);
     }
   };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -39,7 +41,12 @@ const HomePage = () => {
       <WeatherSummary />
       {loaded && <AudioButton />}
       <ShowMoreButton type="button" onClick={handleMoreClick}>
-        {showMore ? "Less" : "More"}
+        <span> {showMore ? "Less detail" : "More detail"}</span>
+        <i
+          className={`fa-solid ${
+            showMore ? "fa-chevron-up" : "fa-chevron-down"
+          }`}
+        ></i>
       </ShowMoreButton>
       <Weather showMore={showMore} />
       {loaded && (
