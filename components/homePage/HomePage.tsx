@@ -1,56 +1,34 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
-import { MainContent, ShowMoreButton } from "./HomeStyles";
+import { MainContent } from "./HomeStyles";
 import Clock from "../clock/Clock";
 import Weather from "../weather/Weather";
 import Meetings from "../meetings/Meetings";
-import { UserEvents } from "@/types/types";
 import AudioButton from "../audioButton/AudioButton";
 import WeatherSummary from "../weather/WeatherSummary";
-import getData from "../services/getData";
-
-type Response = {
-  userEvents: UserEvents;
-  loaded: boolean;
-};
+import ShowMoreButton from "../showMoreButton/ShowMore";
+import useFetch from "../hooks/useFetch";
 
 const HomePage = () => {
-  const [userEvents, setUserEvents] = useState<UserEvents>([]);
-  const [loaded, setloaded] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const { loaded, userEvents } = useFetch();
 
   const handleMoreClick = () => {
     setShowMore(!showMore);
   };
 
-  const fetchData = async () => {
-    const response = (await getData()) as Response;
-    if (response) {
-      setUserEvents(response.userEvents);
-      setloaded(response.loaded);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <MainContent>
       <Clock />
       <WeatherSummary />
-      {loaded && <AudioButton />}
-      <ShowMoreButton type="button" onClick={handleMoreClick}>
-        <span> {showMore ? "Less detail" : "More detail"}</span>
-        <i
-          className={`fa-solid ${
-            showMore ? "fa-chevron-up" : "fa-chevron-down"
-          }`}
-        ></i>
-      </ShowMoreButton>
-      <Weather showMore={showMore} />
       {loaded && (
-        <Meetings showMore={showMore} loaded={loaded} userEvents={userEvents} />
+        <>
+          <AudioButton />
+          <ShowMoreButton showMore={showMore} handleClick={handleMoreClick} />
+        </>
+      )}
+      <Weather showMore={showMore} />
+      {loaded && userEvents && (
+        <Meetings showMore={showMore} userEvents={userEvents} />
       )}
     </MainContent>
   );

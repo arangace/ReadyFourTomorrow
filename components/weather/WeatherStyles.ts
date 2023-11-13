@@ -19,6 +19,9 @@ export const Temperature = styled.h2`
 export const WeatherCondition = styled.h3`
   margin-top: 0.5rem;
   font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const WeatherForecastInformation = styled.p`
   font-size: 1.5rem;

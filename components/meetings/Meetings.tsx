@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { MeetingInformation } from "@/types/types";
+import { UserEvents } from "@/types/types";
 import {
   MeetingHeading,
   MeetingItem,
@@ -9,9 +9,16 @@ import {
 } from "./MeetingsStyles";
 import { useDispatch } from "react-redux";
 import { updateMeetings } from "@/store/meetingsSlice";
+import useFetch from "../hooks/useFetch";
 
-const Meetings = ({ userEvents, loaded, showMore }: MeetingInformation) => {
+type MeetingInformation = {
+  userEvents: UserEvents;
+  showMore?: boolean;
+};
+
+const Meetings = ({ userEvents, showMore }: MeetingInformation) => {
   const dispatch = useDispatch();
+  const { loaded } = useFetch();
 
   const meetingsConstructor = () => {
     let content = "Tomorrows Schedule. ";
@@ -20,6 +27,7 @@ const Meetings = ({ userEvents, loaded, showMore }: MeetingInformation) => {
       dispatch(updateMeetings(content));
     }
   };
+
   useEffect(() => {
     meetingsConstructor();
   }, []);

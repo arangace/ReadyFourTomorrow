@@ -28,6 +28,7 @@ const getWeather = async (location: Location) => {
 
         const todaysWeatherForecast = currentWeatherData.condition.text;
         const todaysTemperature = currentWeatherData.temp_c;
+        const todaysWeatherImage = `https:${currentWeatherData.condition.icon}`;
 
         const morningWeather = tomorrowsWeatherList[8].condition.text;
         const eveningWeather = tomorrowsWeatherList[17].condition.text;
@@ -76,6 +77,7 @@ const getWeather = async (location: Location) => {
           currentConditions: {
             temp: todaysTemperature,
             conditions: todaysWeatherForecast,
+            icon: todaysWeatherImage,
           },
           weather: {
             morningConditions: morningWeather,
@@ -94,6 +96,7 @@ const getWeather = async (location: Location) => {
           weather.currentConditions.conditions
         );
         localStorage.setItem("temp", weather.currentConditions.temp);
+        localStorage.setItem("icon", weather.currentConditions.icon);
         return weather;
       }
     }

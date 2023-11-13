@@ -1,21 +1,10 @@
 import Head from "next/head";
 import HomePage from "../components/homePage/HomePage";
-import { Suspense, useEffect, useState } from "react";
-import { useSession, signOut, getSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { Suspense } from "react";
+import { useSession, signOut } from "next-auth/react";
 import { UserActionPrompt } from "@/styles/shared/globalStyles";
-import Home from "./home";
-import { GetServerSideProps } from "next";
-import { Session, getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function Index() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const router = useRouter();
-
-  const loginHandler = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
   const { status } = useSession();
   if (status === "unauthenticated") {
     signOut({ callbackUrl: "/home" });
@@ -33,11 +22,9 @@ export default function Index() {
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#7056b3" />
       </Head>
-      {status === "authenticated" && (
-        <Suspense fallback={<UserActionPrompt>Loading...</UserActionPrompt>}>
-          <HomePage />
-        </Suspense>
-      )}
+      <Suspense fallback={<UserActionPrompt>Loading...</UserActionPrompt>}>
+        {status === "authenticated" && <HomePage />}
+      </Suspense>
     </>
   );
 }
