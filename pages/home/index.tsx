@@ -3,6 +3,7 @@ import {
   Container,
   DashboardButton,
   Description,
+  DescrptionText,
   Header,
   LoginPromptButton,
   SecondaryHeader,
@@ -18,14 +19,14 @@ const Home = () => {
     <Container>
       <Header>Welcome to Ready Four Tomorrow</Header>
       <SecondaryHeader>
-        Getting you ready for tomorrow all in one place
+        Getting you ready for tomorrow, all in one place
       </SecondaryHeader>
       <Description>
-        <span>
+        <DescrptionText>
           A simple application which provides a summary of your day ahead at the
           click of a button. Making sure you&apos;re prepared for the day ahead!
           Click the &quot;SUMMARY&quot; button for a spoken summary of your day
-        </span>
+        </DescrptionText>
         {status === "unauthenticated" ? (
           <>
             <UserActionPrompt>

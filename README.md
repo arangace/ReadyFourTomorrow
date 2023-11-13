@@ -4,7 +4,5 @@ R4T is a PWA built to give users a summary of their schedule for tomorrow. So us
 
 TODO:
 
-- order events in chronological order
-- render image from weather api
 - Refine user journey
 - re-enable PWA

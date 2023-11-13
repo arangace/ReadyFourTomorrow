@@ -18,7 +18,7 @@ export const Container = styled.div`
   align-items: center;
 `;
 export const Header = styled.h1`
-  margin-bottom: 0;
+  margin-bottom: 4rem;
   grid-row: 1;
 `;
 export const SecondaryHeader = styled.h2`
@@ -52,11 +52,19 @@ export const LoginPromptButton = styled.button`
 `;
 export const Description = styled.section`
   grid-row: 3;
+  text-align: center;
+  @media (min-width: 414px) {
+    text-align: left;
+  }
+`;
+export const DescrptionText = styled.p`
+  text-align: left;
 `;
 export const UserActionPrompt = styled.p`
   text-align: inherit;
   font-size: 2rem;
   font-weight: bold;
+  text-align: left;
 `;
 export const DashboardButton = styled(ButtonInverted)`
   margin-top: 1rem;

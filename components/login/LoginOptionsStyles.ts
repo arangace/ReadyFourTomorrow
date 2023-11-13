@@ -13,6 +13,7 @@ export const LoginButton = styled(Button)`
   display: flex;
   justify-content: flex-start;
   gap: 0.5rem;
+  text-align: left;
   &:hover {
     i {
       color: var(--primary-color);
