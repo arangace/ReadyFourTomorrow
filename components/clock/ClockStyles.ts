@@ -9,6 +9,9 @@ export const ClockItem = styled(Flex)`
   align-items: flex-start;
   justify-content: flex-start;
   padding-left: 1rem;
+  @media (max-width: 414px) {
+    font-size: 5rem;
+  }
 `;
 export const ClockSetting = styled.span`
   font-size: 2.5rem;
