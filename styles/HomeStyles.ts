@@ -65,6 +65,9 @@ export const UserActionPrompt = styled.p`
   font-size: 2rem;
   font-weight: bold;
   text-align: left;
+  @media (max-width: 414px) {
+    text-align: center;
+  }
 `;
 export const DashboardButton = styled(ButtonInverted)`
   margin-top: 1rem;
