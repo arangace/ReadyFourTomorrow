@@ -11,7 +11,6 @@ const WeatherSummary = () => {
   const temp = useRef(localStorage.getItem("temp"));
   const icon = useRef(localStorage.getItem("icon"));
   const { updateCurrentWeatherStore, currentConditions } = useWeather();
-  console.log(icon);
   const locationEnabled = useSelector(
     (state: RootState) => state.forecast.locationEnabled
   );

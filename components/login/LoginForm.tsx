@@ -18,7 +18,6 @@ const validationSchema = Yup.object().shape({
 
 const LoginForm = ({ loginButtonHandler }: LoginButtonItem) => {
   const handleFormSubmit = (values: { email: string; password: string }) => {
-    console.log(values);
     loginButtonHandler();
   };
 

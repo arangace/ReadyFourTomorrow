@@ -7,7 +7,7 @@ import { UserActionPrompt } from "@/styles/shared/globalStyles";
 export default function Index() {
   const { status } = useSession();
   if (status === "unauthenticated") {
-    signOut({ callbackUrl: "/home" });
+    signOut({ callbackUrl: "/login" });
   }
   return (
     <>
