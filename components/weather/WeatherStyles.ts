@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import { Card, FlexColumn } from "@/styles/shared/globalStyles";
+import { ReactNode } from "react";
 
 export const WeatherContainer = styled(FlexColumn)`
   padding-bottom: 2.5rem;
@@ -23,6 +24,11 @@ export const WeatherCondition = styled.h3`
   justify-content: center;
   align-items: center;
 `;
-export const WeatherForecastInformation = styled.p`
+export const WeatherForecastInformation: StyledComponent<
+  string,
+  any,
+  { id: string; children: ReactNode },
+  never
+> = styled.p`
   font-size: 1.5rem;
 `;
