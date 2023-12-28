@@ -1,6 +1,7 @@
 import { HomeCard } from "@/styles/HomeStyles";
 import { Button, ButtonInverted } from "@/styles/shared/globalStyles";
-import styled, { AnyStyledComponent } from "styled-components";
+import { ReactNode } from "react";
+import styled, { StyledComponent } from "styled-components";
 
 export const Header = styled.h2`
   margin-top: 0;
@@ -65,7 +66,12 @@ export const DashboardButton = styled(ButtonInverted)`
   transition: 0.3s;
   font-size: 1.5rem;
 `;
-export const LearnMoreButton: AnyStyledComponent = styled.a`
+export const LearnMoreButton: StyledComponent<
+  string,
+  any,
+  { target: string; href: string; children: ReactNode },
+  never
+> = styled.a`
   border-radius: 0;
   font-size: 1.5rem;
   transition: 0.3s;

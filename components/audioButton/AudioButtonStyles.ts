@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import { ActionButton, Button } from "@/styles/shared/globalStyles";
 
 export const SummaryButton = styled(ActionButton)`
@@ -10,7 +10,12 @@ export const SummaryButton = styled(ActionButton)`
     background-color: white;
   }
 `;
-export const AudioIcon = styled.i`
+export const AudioIcon: StyledComponent<
+  string,
+  any,
+  { className: string },
+  never
+> = styled.i`
   display: flex;
   justify-content: center;
   align-items: center;

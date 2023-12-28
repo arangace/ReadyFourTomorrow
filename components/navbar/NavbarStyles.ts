@@ -1,5 +1,6 @@
 import { Button } from "@/styles/shared/globalStyles";
-import styled, { AnyStyledComponent } from "styled-components";
+import { ReactNode } from "react";
+import styled, { StyledComponent } from "styled-components";
 
 export const NavContainer = styled.nav`
   display: flex;
@@ -11,7 +12,12 @@ export const SignOutButton = styled(Button)`
   padding: 0.75rem;
   font-size: 1.25rem;
 `;
-export const LogoContainer: AnyStyledComponent = styled.a`
+export const LogoContainer: StyledComponent<
+  string,
+  any,
+  { href: string; children: ReactNode },
+  never
+> = styled.a`
   filter: brightness(0.75);
   transition: 0.3s;
   &:hover {
