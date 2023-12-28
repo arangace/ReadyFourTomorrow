@@ -1,5 +1,5 @@
 import { Button, FlexColumn } from "@/styles/shared/globalStyles";
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 
 export const Container = styled(FlexColumn)`
   justify-content: flex-start;
@@ -20,6 +20,11 @@ export const LoginButton = styled(Button)`
     }
   }
 `;
-export const Icon = styled.i`
+export const Icon: StyledComponent<
+  string,
+  any,
+  { className: string },
+  never
+> = styled.i`
   color: white;
 `;
