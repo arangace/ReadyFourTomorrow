@@ -1,3 +1,4 @@
+import { ButtonProps } from "@/types/types";
 import styled from "styled-components";
 
 export const Flex = styled.div`
@@ -23,7 +24,7 @@ export const UserActionPrompt = styled.h2`
   margin: 0.5rem 2.5rem 0.5rem 2.5rem;
 `;
 
-export const Button = styled.button`
+export const Button: ButtonProps = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +37,7 @@ export const Button = styled.button`
   outline: initial;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  color: ${(props) => props.color || "white"};
+  color: ${(props: any) => props.color || "white"};
   &:hover {
     color: var(--primary-colour);
     background-color: var(--text-colour);
@@ -46,7 +47,7 @@ export const Button = styled.button`
     background-color: var(--text-colour);
   }
 `;
-export const ButtonInverted = styled.button`
+export const ButtonInverted: ButtonProps = styled.button`
   background-color: white;
   padding: initial;
   margin: initial;

@@ -1,5 +1,5 @@
 import { Button } from "@/styles/shared/globalStyles";
-import styled from "styled-components";
+import styled, { AnyStyledComponent } from "styled-components";
 
 export const NavContainer = styled.nav`
   display: flex;
@@ -10,11 +10,8 @@ export const NavContainer = styled.nav`
 export const SignOutButton = styled(Button)`
   padding: 0.75rem;
   font-size: 1.25rem;
-  @media (max-width: 500px) {
-    display: none;
-  }
 `;
-export const LogoContainer = styled.a`
+export const LogoContainer: AnyStyledComponent = styled.a`
   filter: brightness(0.75);
   transition: 0.3s;
   &:hover {

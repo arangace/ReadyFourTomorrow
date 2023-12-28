@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { AnyStyledComponent } from "styled-components";
 
 export type Layout = {
   children: ReactNode;
@@ -54,6 +55,6 @@ export type Token = {
     user: { id: string };
   };
 };
-
+export type ButtonProps = string | AnyStyledComponent;
 export type JwtToken = Pick<Token, "token" | "account" | "profile">;
 export type SessionToken = Pick<Token, "session" | "token">;

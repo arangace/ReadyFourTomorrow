@@ -15,7 +15,9 @@ const User = ({ user }: User) => (
     {user.image ? (
       <Image src={user.image} fill alt="Profile Image" />
     ) : (
-      <Icon className="fa fa-user"></Icon>
+      <Icon>
+        <i className="fa fa-user"></i>
+      </Icon>
     )}
     <Heading>{user.name}</Heading>
   </UserContainer>

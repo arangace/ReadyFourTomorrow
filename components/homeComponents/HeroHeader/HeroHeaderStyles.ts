@@ -1,6 +1,6 @@
 import { HomeCard } from "@/styles/HomeStyles";
 import { Button, ButtonInverted } from "@/styles/shared/globalStyles";
-import styled from "styled-components";
+import styled, { AnyStyledComponent } from "styled-components";
 
 export const Header = styled.h2`
   margin-top: 0;
@@ -47,17 +47,12 @@ export const Description = styled.section`
     align-items: center;
   }
 `;
-export const LoginPromptButton = styled.button`
-  border: initial;
+export const LoginPromptButton = styled(Button)`
   color: var(--text-colour);
   border: 2px solid #30bfbf;
-  border-radius: 1rem;
-  cursor: pointer;
   font-size: 1.5rem;
-  padding: 1rem 1.5rem;
   background-color: #30bfbf;
   transition: 0.3s;
-  border-radius: 0;
 
   &:hover {
     color: #30bfbf;
@@ -70,7 +65,7 @@ export const DashboardButton = styled(ButtonInverted)`
   transition: 0.3s;
   font-size: 1.5rem;
 `;
-export const LearnMoreButton = styled.a`
+export const LearnMoreButton: AnyStyledComponent = styled.a`
   border-radius: 0;
   font-size: 1.5rem;
   transition: 0.3s;
